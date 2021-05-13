@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="userName">
+        <br>
+        <span></span>
+    </form>
+    <script>
+        const oIpt = document.querySelector("input[name=userName]");
+        const oSpan = document.querySelector("span");
+
+        //当oIpt的内容改变时
+        oIpt.oninput = function () {
+            const value = this.value;
+            //将value发送给服务器
+            // 1. 创建xhr对象
+            const xhr = new XMLHttpRequest();
+            // 2. 设置请求方式和请求地址
+            xhr.open('post', 'http://127.0.0.1:5000/findUser');
+
+            // 3. 设置请求头
+            xhr.setRequestHeader(
+                'content-type',
+                'application/x-www-form-urlencoded'
+            );
+
+            // 3. 设置请求主体并发送请求
+            xhr.send('username=' + value);
+
+            xhr.onreadystatechange = function () {
+                // 表示请求完成了
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        // 表示请求成功了
+
+                        console.log(xhr.responseText);
+                        if (xhr.responseText === 'ok') {
+                            //表示用户名可以用
+                            oSpan.textContent = '可用';
+                        } else {
+                            //表示用户名不可用
+                            oSpan.textContent = '不可用';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
