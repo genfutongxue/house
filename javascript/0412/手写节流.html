@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        //节流：降低事件触发的频率
+        //初级版：
+        /* var lastTime=0;
+        document.onmousemove=function(){
+            var time=Date.now();
+            if(time-lastTime<1000){
+                return;
+            }
+            lastTime=time;
+            console.log("qq");
+        } */
+
+
+
+        //封装：
+        function mouseMove() {
+            console.log(2);
+
+        }
+        document.onmousemove = throttle(mouseMove, 1000);
+        //节流函数：
+        function throttle(fn, time) {
+            //返回一个函数，这个函数就是要执行的函数
+            var lastTime = 0;
+            return function (event) {
+                var nowTime = Date.now();
+                if (nowTime - lastTime < time) {
+                    return;
+                }
+                lastTime = nowTime;
+                //调用核心代码函数
+                //把this指向鼠标移动的对象,fn的this指向的是window，所以要修改,当前函数的this指向的就是鼠标移动的对象，所以直接改成this就行
+                //调用fn函数的时候，还要把event对象传进去
+                fn.call(this, event);
+                //或者return的函数不写形参，那么这里写arguments[0];
+                //fn.call(this,arguments[0]);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

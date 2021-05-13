@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let promise = new Promise(function (resolve, reject) {
+
+
+            setTimeout(() => {
+                let data = [1, 2, 3]
+
+
+                reject(data)
+
+            }, 1000)
+        })
+
+
+
+        let promise1 = promise.then(
+
+            (data) => {
+
+                console.log('成功了', data)
+                return new Promise(function (resolve, reject) {
+                    resolve('test')
+                    
+                })
+            },
+
+            (err) => {
+
+                console.log('失败了', err)//失败了 [1,2,3]
+                return new Promise((resolve) => {
+                    resolve(123)
+                })
+            }
+        )
+            console.log(promise1);
+        let promise2 = promise1.then(
+            (data) => {
+
+                console.log('1成功了', data)//1成功了 123
+                return false
+
+            },
+
+            (err) => {
+                console.log('1失败了', err)
+                return new Promise((resolve, reject) => {
+                    reject('890')
+                })
+            }
+        )
+            console.log(promise2);
+        promise2.then(
+            (data) => {
+
+                console.log('2成功了', data)//2成功了 false
+            },
+
+            (err) => {
+                console.log('2失败了', err)
+            }
+        )
+    </script>
+</body>
+
+</html>

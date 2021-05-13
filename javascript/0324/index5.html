@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <label>
+        成绩<input type="text" id="cj">
+    </label>
+    <button id="btn">提交</button>
+    <hr>
+    <span>
+        成绩是：
+    </span>
+    <p id="dj"></p>
+    <script>
+        var oCj = document.getElementById("cj");
+        var oBtn = document.getElementById("btn");
+        var oDj = document.getElementById("dj");
+        oBtn.onclick = function () {
+            var chengji = +oCj.value;
+            if (chengji >= 0 && chengji <= 100) {
+                if (chengji >= 90 && chengji <= 100) {
+                    oDj.textContent = "S";
+                } else if (chengji >= 80 && chengji < 90) {
+                    oDj.textContent = "A";
+                } else if (chengji >= 70 && chengji < 80) {
+                    oDj.textContent = "B";
+                } else if (chengji >= 60 && chengji < 70) {
+                    oDj.textContent = "C";
+                } else {
+                    oDj.textContent = "Z";
+                }
+            }else{
+                oCj.value="";
+                alert("输入有误！")
+            }
+        }
+
+        
+
+
+    </script>
+</body>
+
+</html>

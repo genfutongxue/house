@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #outer {
+            position: fixed;
+            height: 100%;
+            width: 20px;
+            top: 0;
+            right: 0;
+            background-color: blanchedalmond;
+        }
+
+        #inner {
+            position: absolute;
+            width: 20px;
+            height: 60px;
+            right: 0;
+            top: 0;
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+
+    </div>
+    <div id="outer">
+        <div id="inner">
+
+        </div>
+    </div>
+    <script>
+        var oContent = document.getElementById("content");
+        var oOuter = document.getElementById("outer");
+        var oInner = document.getElementById("inner");
+        //用for循环生成内容
+        for (var i = 0; i < 150; i++) {
+            oContent.innerHTML += i + "<br>";
+        }
+        //设置滑块滚动
+        //滑块高度/滑槽高度=视口高度/文档内容高度
+        //滑槽高度：outer的不带边框的高度
+        var huacaoHeight = oOuter.clientHeight;
+        //视口高度：HTML的clientHeight
+        var shikouHeight = document.documentElement.clientHeight;
+        //文档内容的高度：content的offsetHeight
+        var allDocHeight = oContent.clientHeight;
+        var huakuaiHeight = huacaoHeight / allDocHeight * shikouHeight;
+        oInner.style.height = huakuaiHeight + "px";
+        oInner.onmousedown = function (e) {
+            //清除鼠标移动带来的给别的地方的影响
+            e.preventDefault();
+            //鼠标到滑块顶部的距离:e.offsetY
+            var mouseToHuakuai = e.offsetY;
+            //设置鼠标移动事件
+            document.onmousemove = function (e) {
+                //清除鼠标移动带来的给别的地方的影响
+                e.preventDefault();
+                //鼠标到顶部的距离：e.clientY
+                //获取到滑块到顶部的距离
+                var huakuaiLocation = e.clientY - mouseToHuakuai;
+                //判断临界值：
+                if (huakuaiLocation <= 0) {
+                    huakuaiLocation = 0;
+                } else if (huakuaiLocation >= oOuter.clientHeight - oInner.offsetHeight) {
+                    huakuaiLocation = oOuter.clientHeight - oInner.offsetHeight;
+                }
+                oInner.style.top = huakuaiLocation + "px";
+
+                //设置鼠标滑动的时候内容跟着动
+                //滑块走多远文档就走多远，等比例的
+                var scale = oContent.clientHeight / oOuter.clientHeight;
+                var docMove = scale * huakuaiLocation;
+                oContent.style.marginTop = -docMove + "px";
+            }
+            document.onmouseup = function () {
+                //当鼠标抬起的时候清掉移动事件
+                document.onmousemove = null;
+                //因为每次点击都会生成一次鼠标抬起事件，所以当次用完了就清掉当次的
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

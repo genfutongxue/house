@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //删除数组有哪些方法：
+            var arr=[231,34,587,61,34789,1234,576];
+            //1.pop:只能删除数组的最后一个元素
+            arr.pop();//返回的值是删除掉的元素的值
+            //2.shift:只能删除掉数组的第一个元素
+            arr.shift();//返回的值是删除掉的元素的值
+            //3.delete:只能删除掉元素的值，其位置还在，相当于清空这个位置
+            delete arr[0];//删除后，该下标的位置的值为undefined
+            //4.length变短：只能删除掉后面的元素，而且受很多限制
+            arr.length=4;
+            //5.splice:万能的，可以删除，可以修改，可以增加。
+            //格式:Array.splice(a,b,c):a为删除的元素的起始下标，b为要删除的长度，c为要添加的东西（可以不填）。
+            //返回的值：返回删除掉的元素组成的新的数组。如果没有删除元素，那么就返回一个空的数组。
+            //splice删除
+            arr.splice(0,1);
+            //splice增加
+            arr.splice(0,0,231,34);
+            //splice更改
+            arr.splice(3,2,1234,576);
+            console.log(arr);
+            //如果下标为负数，那么就从后面往前面数，找到位置后再从那个位置从左往右删除。
+            arr.splice(-2,1);
+            console.log(arr);
+        </script>
+    </body>
+</html>

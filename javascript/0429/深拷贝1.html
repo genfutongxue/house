@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //深拷贝
+        //先创建个函数，用来检测数据类型并截取出来值
+        function checkType(a) {
+            return Object.prototype.toString.call(a).slice(8, -1).toLowerCase();
+        }
+
+        //创建一个复制函数，里面进行判断，如果是对象或者数组就重新调用函数去执行
+        function copy(obj) {
+            let newObj = null;
+            const re = checkType(obj);
+            //如果它是一个对象
+            if (re === "object") {
+                //那么就创建一个对象
+                newObj = {};
+            } else if (re === "array") {
+                //如果是一个数组,就创建一个数组
+                newObj = [];
+            } else {
+                return obj;
+            }
+            for (let key in obj) {
+                newObj[key] = copy(obj[key]);
+            }
+            return newObj;
+        }
+        let obj1 = {
+            name: "laowang",
+            hobby: ["唱", "跳", "rap"],
+            eat: function () {
+                console.log("eat");
+            }
+        }
+        console.log(copy(obj1));
+        console.log(copy(obj1).hobby===obj1.hobby)
+    </script>
+</body>
+
+</html>

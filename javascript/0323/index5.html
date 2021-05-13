@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //++递增/--递减
+        var a = 1
+        console.log(a++);//a++就是先把a的值传过去，再进行运算
+        console.log(++a);//++a就是先运算出来再进行传值
+        var a = 1, b = null;
+        b = ++a - a++ + a++ + ++a + ++a + ++a;
+        console.log(b);
+        b=2-2+3+5+6+7;
+        console.log(b);
+        var d="ll";
+        console.log(++d);//NaN
+        var j="9";
+        console.log(--j);//8
+    </script>
+</body>
+
+</html>

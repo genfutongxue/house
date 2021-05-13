@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //有一个变量a和变量c，如果a大于3，则c为4，否则c为5
+            var a=2,c=2;
+            //1.if语句
+            if(a>3){
+                c=4;
+            }else{
+                c=5;
+            }
+            //2.逻辑与和逻辑或
+            (a>3)&&(c=4)||(c=5)
+            //3.逻辑与和逻辑非
+            (a>3)&&(c=4);
+            !(a>3)&&(c=5);
+            //4.三元写法：a?b:c
+            //两种写法：
+            a>3?c=4:c=5;
+            c=a>3?4:5;
+        </script>
+    </body>
+</html>

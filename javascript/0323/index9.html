@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body{
+                background-color:green;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="btn">按钮</button>
+        <script>
+            //！A  先把A转换为Boolean值，再取反
+            /* console.log(!0);
+            console.log(!2);
+            console.log(!"21");
+            console.log(![]);
+            console.log(!{});
+            console.log(!null); */
+
+            var oBtn=document.getElementById("btn");
+            var power=true;
+            oBtn.onclick=function(){
+                if(power){
+                    document.body.style.background="blue";
+                    /* power=!power; */
+                }else{
+                    document.body.style.background="green";
+                    /* power=!power; */
+                }
+                power=!power;
+            }
+        </script>
+    </body>
+</html>

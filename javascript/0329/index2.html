@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //concat:返回的是拼接成一个新的字符串，不影响原来字符串的值
+            var arr1=[1,2,41,12,78,5,21,2];
+            console.log(arr1);//[1, 2, 41, 12, 78, 5, 21, 2]
+            console.log(arr1.concat(44,33));//[1, 2, 41, 12, 78, 5, 21, 2, 44, 33]
+            console.log(arr1.concat(999,["a","g"]));//[1, 2, 41, 12, 78, 5, 21, 2, 999, "a", "g"]
+            
+
+            //将字符串反转：先将字符串转数组，再将数组反转，再将数组转字符串，最后把三个步骤拼接起来
+            var arr2="askdbasnjoe";
+            var arr3=arr2.split("").reverse().join("");
+            console.log(arr2,arr3);
+        </script>
+    </body>
+</html>

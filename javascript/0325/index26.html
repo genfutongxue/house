@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="btn">按钮</button>
+        <p id="con">0</p>
+        <script>
+            //每次点击按钮的时候，让con的内容的数值 每次加2
+            var oBtn=document.getElementById("btn");
+            var oCon=document.getElementById("con");
+            oBtn.onclick=function(){
+                var content=Number(oCon.innerHTML);
+                content+=2;
+                oCon.innerHTML=content;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #big{
+                width:500px;
+                height:500px;
+                border:5px solid green;
+            }
+            #mid{
+                width:300px;
+                height:300px;
+                border:5px solid green;
+            }
+            #small{
+                width:100px;
+                height:100px;
+                border:5px solid green;
+            }
+        </style>
+    <body>
+        
+        <div id="big">
+            <div id="mid">
+                <div id="small">
+
+                </div>
+            </div>
+        </div>
+        <script>
+            var oBig=document.querySelector("#big");
+            var oMid=document.querySelector("#mid");
+            var oSmall=document.querySelector("#small");
+            oSmall.addEventListener("click",function(){
+                alert("small");
+            },true);
+            oMid.addEventListener("click",function(){
+                alert("mid");
+            },false);
+            oBig.addEventListener("click",function(){
+                alert("big");
+            },true);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换动画版</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+        }
+        .outer{
+            width: 608px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+        #title{
+            overflow: hidden;
+        }
+        #title h2{
+            width: 150px;
+            border: 1px solid red;
+            float: left;
+            height: 40px;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+        #title .active{
+            background-color: red;
+        }
+        #con{
+            height: 350px;
+            overflow-y: scroll;
+            /* overflow: hidden; */
+        }
+        #con li{
+            height: 350px;
+        }
+        #con li img{
+            width: 608px;
+            height: 350px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div id="title">
+            <h2 class="active">科技潮品</h2>
+            <h2>司法拍卖</h2>
+            <h2>爱逛街</h2>
+            <h2>游戏动漫</h2>
+        </div>
+        <ul id="con">
+            <li class="show"><img src="" alt="小青"></li>
+            <li><img src="" alt="小红"></li>
+            <li><img src="" alt="小蓝"></li>
+            <li><img src="" alt="小绿"></li>
+        </ul>
+    </div>
+    <script>
+        //点击h2，对应的h2会有特殊样式，并且内容会切换到对应的内容上，而且是滑入切换的
+        var oH2s=document.querySelectorAll("#title>h2");
+        oH2s.forEach(function(item,index){
+            item.dataset.mark=index;
+        });
+        var oLis=document.querySelectorAll("#con>li");
+        var oCon=document.getElementById("con");
+        var oTitle=document.getElementById("title");
+        var timer=null;
+        oTitle.onclick=function(e){
+            clearInterval(timer);
+            if(e.target.nodeName.toLowerCase()==="h2"){
+                oH2s.forEach(function(item){
+                    item.classList.remove("active");
+                });
+                e.target.classList.add("active");
+                var startlocation=oCon.scrollTop;
+                var endLocation=oLis[0].offsetHeight*e.target.dataset.mark;
+                var startStep=0;
+                var endStep=50;
+                var everyStep=(endLocation-startlocation)/endStep;
+                timer=setInterval(function(){
+                    startStep++;
+                    startlocation+=everyStep;
+                    if(startStep>=endStep){
+                        clearInterval(timer);
+                    }
+                    oCon.scrollTop=startlocation;
+                },10);
+                
+            }
+        }
+        
+    </script>
+</body>
+</html>

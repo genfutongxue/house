@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //创建对象的两种方法
+            var obj={
+                name:"kangkang",
+                add:"shenzhen",
+                adw_apk:"ahisa",
+                _adwapk:51,
+                $adpka:321,
+                "Content-Type":2132,
+            }
+
+            var a="wqeqw";
+            var obj1=new Object();
+            obj1.name="kang";
+            obj1.age=15;
+            obj1.add="jiangxi";
+            obj1["Content-Type1"]="asdwfq";
+            obj1[a]="mmkpl";
+            obj1["name"]="jjj";
+            console.log(obj1);
+
+
+            //增删改查
+            //增
+            obj.age=18;
+            //删
+            delete obj.name;
+            //改
+            obj.add="jiangxi";
+            //查
+            console.log(obj.add);
+            console.log(obj.name);//没有就显示undefined
+
+
+            //对象的点操作符和中括号操作符
+            obj.adw_apk="haha";
+            obj1["wawa"]="asd"
+            obj1[a]="pmpmp";
+            obj1["asa-sda"]="pomppmsnnsodkna";
+            delete obj1["asa-sda"];
+
+            //有非法字符的时候就用中括号加引号赖获取；有变量就用中括号，不用加引号
+        </script>
+    </body>
+</html>

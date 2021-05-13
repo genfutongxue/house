@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 需求：setTimeout模拟发送请求
+        请求a数据，请求成功在请求b数据，请求成功在请求c数据
+        */
+
+        const promise = new Promise((revolse, reject) => {
+            console.log("开始加载数据");
+            revolse();
+        });
+        promise.then(() => {
+            return new Promise((revolse, reject) => {
+                setTimeout(() => {
+                    console.log("a加载完成");
+                    revolse();
+                }, 2000);
+            });
+        })
+            .then(() => {
+                return new Promise((revolse, reject) => {
+                    setTimeout(() => {
+                        console.log("b加载完成");
+                        revolse();
+                    }, 2000);
+                });
+            })
+            .then(() => {
+                return new Promise((revolse, reject) => {
+                    setTimeout(() => {
+                        console.log("c加载完成");
+                        revolse();
+                    }, 2000);
+                });
+            })
+            .then(() => {
+                console.log("a,b,c全部加载完成");
+            })
+
+
+    </script>
+</body>
+
+</html>

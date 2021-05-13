@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <button id="red">红色</button>
+    <button id="green">绿色</button>
+    <button id="yellow">黄色</button>
+    <button id="pink">粉色</button>
+    <script>
+        //获取元素
+        var oRed=document.getElementById("red");
+        var oGreen=document.getElementById("green");
+        var oYellow=document.getElementById("yellow");
+        var oPink=document.getElementById("pink");
+        //先制造一个函数用来切换背景颜色
+        function changeColor(color){
+            document.body.style.background=color;
+        }
+        //绑定点击事件
+        oRed.onclick=function(){
+            changeColor("red");
+        }
+        oGreen.onclick=function(){
+            changeColor("green");
+        }
+        oYellow.onclick=function(){
+            changeColor("yellow");
+        }
+        oPink.onclick=function(){
+            changeColor("pink");
+        }
+    </script>
+</body>
+
+</html>

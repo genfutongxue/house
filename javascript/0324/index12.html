@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //定义一个变量a=5,让a执行5次加3。然后弹出a最终的值
+        var a = 5;
+        for (var i = 0; i < 5; i++) {
+            a = a + 3;//a+=3;
+        }
+        console.log(a);
+            /* 求1到9的和
+                求1到100的和
+                求1 - 99 中的单数的和
+                求1 - 99 中是3的倍数的数字和
+                定义一个v， 当v等于0时， v进行3次自加1。 否则v进行4次自加2
+                定义v＝ 3； 对变量i由0到3进行遍历； 当i 等于2时， v自加2； 否则v自加3 */
+                for(var i=0,a=0;i<10;i++){
+                    a=a+i;
+                }
+                console.log(a);
+                for(var i=1,a=0;i<100;i=i+2){
+                    a=a+i;
+                }
+                console.log(a);
+                for(var i=1,a=0;i<100;i++){
+                    if(i%2===1){
+                        a=a+i;
+                    }
+                }
+                console.log(a);
+                console.log("----------------------------");
+                var v=0;
+                if(v===0){
+                    for(var i=0;i<3;i++){
+                        v++;
+                    }
+                    console.log(v);
+                }else{
+                    for(var i=0;i<4;i++){
+                        v=v+2;
+                    }
+                    console.log(v);
+                }
+                console.log("----------------------------");
+                //定义v＝ 3； 对变量i由0到3进行遍历； 当i 等于2时， v自加2； 否则v自加3
+                var v=3;
+                for(var i=0;i<4;i++){
+                    if(i===2){
+                        v=v+2;
+                        console.log(v);
+                    }else{
+                        v=v+3;
+                        console.log(v);
+                    }
+                }
+                
+    </script>
+</body>
+
+</html>

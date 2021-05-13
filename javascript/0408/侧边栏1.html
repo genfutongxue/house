@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #ul {
+            position: fixed;
+            right: 0;
+            top: 200px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #ul>li {
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+
+        #ul>li>.a1,
+        #ul>li>.b1 {
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        #ul>li>.a1 {
+            position:relative;
+            width: 50px;
+            background-color: lightskyblue;
+            z-index:8;
+        }
+
+        #ul>li>.b1 {
+            position:absolute;
+            right:-200px;
+            top:0;
+            width: 250px;
+            background-color: olivedrab;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>
+            <div class="a1">反馈</div>
+            <div class="b1">我的反馈</div>
+        </li>
+        <li>
+            <div class="a1">反馈</div>
+            <div class="b1">我的反馈</div>
+        </li>
+        <li>
+            <div class="a1">反馈</div>
+            <div class="b1">我的反馈</div>
+        </li>
+        <li>
+            <div class="a1">反馈</div>
+            <div class="b1">我的反馈</div>
+        </li>
+    </ul>
+    <script>
+        var oUl=document.getElementById("ul");
+        var oLis=document.querySelectorAll("#ul>li");
+        var oB1s=document.getElementsByClassName("b1");
+        oLis.forEach(function(item,index){
+            item.onmouseenter=function(){
+                var steps=20;
+                var startLocation=-200;
+                var endLocation=50;
+                var everyStep=(endLocation-startLocation)/steps;
+                var time=setInterval(function(){
+                    startLocation+=everyStep;
+                    if(startLocation===endLocation){
+                        clearInterval(time);
+                    }
+                    oB1s[index].style.right=startLocation+"px";
+                },10);
+            }
+            item.onmouseleave=function(){
+                var steps=20;
+                var startLocation=50;
+                var endLocation=-200;
+                var everyStep=(endLocation-startLocation)/steps;
+                var time=setInterval(function(){
+                    startLocation+=everyStep;
+                    if(startLocation===endLocation){
+                        clearInterval(time);
+                    }
+                    oB1s[index].style.right=startLocation+"px";
+                },10);
+            }
+        })
+    </script>
+</body>
+
+</html>

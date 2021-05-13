@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //indexOf方法：通过下标来检测数组中是否存在某个元素
+            //格式：Array.indexOf(a,b);a代表要检测的元素，b代表要从哪里开始检测的位置（下标），b可以是正数也可以是负数，负数就从后面数它的位置，同样是从左往右开始检测，可以不写，不写就代表0，从开头的地方开始检测。
+            //返回值：存在则返回该元素所在的位置；不存在则返回-1，代表没有这个元素
+            //检测的时候是全等判断，值要相等类型也要相等
+            var arr=[2,7,14,4,3,61,265,7,5];
+            var re=arr.indexOf(14);
+            console.log(re);
+            var re1=arr.indexOf(3)
+            console.log(re1);
+            var re2=arr.indexOf(99);
+            console.log(re2);
+            var re3=arr.indexOf(7,-1);
+            console.log(re3);
+
+            //lastIndexOf方法：和indexOf方法类似，只不过方向相反，lastIndexOf是从后往前检测，其他结果和indexOf相同
+            var re4=arr.lastIndexOf(7);
+            console.log(re4);
+        </script>
+    </body>
+</html>

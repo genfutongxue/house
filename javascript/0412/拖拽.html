@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: fixed;
+        }
+
+        #box1 {
+            background-color: #000;
+        }
+
+        #box2 {
+            background-color: pink;
+        }
+
+        #box3 {
+            background-color: green;
+        }
+
+        #box4 {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <script>
+        //普通版：
+        var oBox1=document.getElementById("box1");
+        var oBox2=document.getElementById("box2");
+        var oBox3=document.getElementById("box3");
+        var oBox4=document.getElementById("box4");
+        oBox1.onmousedown=function(e){
+            var obj1={
+                x:e.offsetX,
+                y:e.offsetY
+            }
+            document.onmousemove=function(e){
+                var obj11={
+                    x:e.clientX,
+                    y:e.clientY
+                }
+                oBox1.style.left=(obj11.x-obj1.x)+"px";
+                oBox1.style.top=(obj11.y-obj1.y)+"px";
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            }
+        }
+        oBox2.onmousedown=function(e){
+            var obj2={
+                x:e.offsetX,
+                y:e.offsetY
+            }
+            document.onmousemove=function(e){
+                var obj22={
+                    x:e.clientX,
+                    y:e.clientY
+                }
+                oBox2.style.left=(obj22.x-obj2.x)+"px";
+                oBox2.style.top=(obj22.y-obj2.y)+"px";
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            }
+        }
+        oBox3.onmousedown=function(e){
+            var obj3={
+                x:e.offsetX,
+                y:e.offsetY
+            }
+            document.onmousemove=function(e){
+                var obj33={
+                    x:e.clientX,
+                    y:e.clientY
+                }
+                oBox3.style.left=(obj33.x-obj3.x)+"px";
+                oBox3.style.top=(obj33.y-obj3.y)+"px";
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            }
+        }
+        oBox4.onmousedown=function(e){
+            var obj4={
+                x:e.offsetX,
+                y:e.offsetY
+            }
+            document.onmousemove=function(e){
+                var obj44={
+                    x:e.clientX,
+                    y:e.clientY
+                }
+                oBox4.style.left=(obj44.x-obj4.x)+"px";
+                oBox4.style.top=(obj44.y-obj4.y)+"px";
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #big{
+                width:600px;
+                height:600px;
+                border:10px solid green;
+            }
+            #small{
+                width:200px;
+                height:200px;
+                border:10px solid green;
+                box-sizing:border-box;
+                margin:200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="big">
+            <div id="small">
+
+            </div>
+        </div>
+        <script>
+            var oBig=document.getElementById("big");
+            var oSmall=document.getElementById("small");
+            oSmall.onclick=function(e){
+                alert(1);
+                e.stopPropagation();//阻止了传播到big上的点击事件
+            }
+            oBig.onclick=function(e){
+                alert(3);
+            }
+        </script>
+    </body>
+</html>

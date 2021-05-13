@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="box">
+        
+    </div>
+    <script>
+        let data={
+            message:{
+                name:"老王",
+                age:50,
+                add:"深圳",
+                isMerray:"yes",
+            }
+        }
+        let oBox=document.querySelector(".box");
+        oBox.innerHTML=`<h2>name:${data.message.name}</h2>
+        <p>age:${data.message.age}</p>
+        <p>add:${data.message.add}</p>
+        <span>isMerray:${data.message.isMerray}</span>`;
+        
+    </script>
+
+</body>
+</html>

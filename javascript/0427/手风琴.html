@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .parentWrap {
+      width: 200px;
+      text-align: center;
+
+    }
+
+    .menuGroup {
+      border: 1px solid #999;
+      background-color: #e0ecff;
+    }
+
+    .groupTitle {
+      display: block;
+      height: 20px;
+      line-height: 20px;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .menuGroup>div {
+      height: 200px;
+      background-color: #fff;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="parentWrap">
+    <li class="menuGroup">
+      <span class="groupTitle">标题1</span>
+      <div>我是弹出来的div1</div>
+    </li>
+    <li class="menuGroup">
+      <span class="groupTitle">标题2</span>
+      <div>我是弹出来的div2</div>
+    </li>
+    <li class="menuGroup">
+      <span class="groupTitle">标题3</span>
+      <div>我是弹出来的div3</div>
+    </li>
+    <li class="menuGroup">
+      <span class="groupTitle">标题4</span>
+      <div>我是弹出来的div4</div>
+    </li>
+  </ul>
+</body>
+
+<!-- 1. 引包 -->
+<script src="./jquery-1.12.4.js"></script>
+<script>
+  /* $("ul>li>span").click(function(){
+    $(this).siblings().css({display:"block"}).parent().siblings().find("div").css({display:"none"})
+  }) */
+
+  $("ul>li>span").click(function () {
+    //先获取到当前点击对象，把它转换成jQuery对象，然后就可以找到它的兄弟元素，然后再把它的兄弟元素转换成DOM对象，这样就可以获取DOM对象的行内样式，就可以进行判断了，再利用三元运算，简单实现判断
+    // $(this).next()[0].style.display==="block"?$(this).parent().parent().find("div").hide():$(this).next().show().parent().siblings().find("div").hide();
+    
+    //toggel方法：
+    $(this).next().toggle().parent().siblings().find("div").hide();
+  })
+</script>
+
+</html>

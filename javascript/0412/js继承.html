@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //封装一个父类，再封装一个子类，当父类的属性和方法子类可以使用的时候就叫继承
+        function Parent(name, age, add) {
+            this.Name = name;
+            this.Age = age;
+            this.Add = add;
+        }
+        Parent.prototype.eat=function(){
+            console.log("chifan");
+        }
+        function Zi(sex, name, age, add) {
+            this.Sex = sex;
+            //调用Parent构造函数
+            Parent.call(this, name, age, add);
+        }
+        //把父类的一个实例化对象赋值给子类的原型对象，那么当子类找方法的时候就会去沿着原型链去寻找，并且子类修改了方法也不会影响到父类的原型链，这样就把原型链继承了，就可以使用父类的方法了
+        Zi.prototype = new Parent();
+        //虽然原型链解决了，但是构造器出了问题，子类的实例化对象的隐式原型对象通过consructor找到的构造器是父类的构造函数，那么要把构造器修改回来
+        Zi.prototype.constructor=Zi;
+
+        Zi.prototype.study=function(){
+            console.log("haohaoxuexi");
+        }
+        var a=new Zi("男","小明",20,"深圳");
+        console.log(a);
+        console.log(a.constructor);
+        var b=new Parent();
+        console.log(b.study);
+        console.log(b.eat);
+    </script>
+</body>
+
+</html>

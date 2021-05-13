@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //sort方法：将数组的值进行排序，有升序(a-b)和降序(b-a)
+            //返回值：将原来的数组进行排序，直接改变了原数组，并把原数组的地址值返回出去。
+            //回调函数的第一个参数a和第二个参数b 分别对应着后边的值和前边的值
+            var arr = [1, 31, 23, 111, 45, 26,"a","A","b","B"];
+            //在不输入function(a,b){}的情况下，返回的值的排序是根据字符串来排序的
+            arr.sort();
+            console.log(arr);
+            //接受一个回调函数之后，数组将会把数字就按照数字来进行排序;字符串就按照字符串进行排序;如果字符串里包含了数字，那么就全部按照字符串来进行排序。这种情况很少出现。
+            arr.sort(function(a,b){
+                return a-b;
+            });
+            console.log(arr);
+            arr.sort(function (a,b){
+                return b-a;
+            })
+            console.log(arr);
+        </script>
+    </body>
+</html>

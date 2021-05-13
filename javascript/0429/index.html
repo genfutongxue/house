@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            //这个大括号里面写的东西就是实例的东西
+            
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            //给实例上添加的方法
+            do=()=>{console.log("实例的方法")};
+
+            //给原型添加方法
+            get(){console.log("原型的方法")}
+        }
+        /* const person=new Person("王炸",25);
+        person.do();
+        console.log(person.name);
+        console.log(person.age); */
+
+        class Children extends Person{
+            //如果没有写constructor,那么会默认添加constructor和super
+            constructor(name,age,classroom){
+                //继承Person的属性
+                //这里super里面继承的属性是怎么样的？
+                super(age);
+                this.classroom=classroom;
+            }
+
+        }
+        const child=new Children("小明",10,"c311");
+        child.do();
+        child.get();
+
+        console.log(child.name);
+        console.log(child.age);
+        console.log(child.classroom);
+        const a=new Person();
+        console.log(a.constructor);
+
+
+        class Hanshu{
+            //这个类里面的构造器里面的内容
+            constructor(a,b){
+                this.A=a;
+                this.B=b;
+            }
+            //给原型上添加方法
+            do(){console.log("原型上的方法")}
+            __proto__(what){
+                this.what=what;
+            }
+            //给实例化对象上添加方法
+            get=()=>{console.log("实例化对象的方法")}
+        }
+        (new Hanshu).do();
+        (new Hanshu).get();
+        console.log((new Hanshu(5,9)).A);
+        console.log((new Hanshu(5,9)).B);
+        console.log(new Hanshu(1,5));
+
+        const fn=(...x)=>(y,z,d)=>x;
+        const fn1=fn(1,2,3)();
+        console.log(fn1);
+
+        const s=import("./index.js");//返回一个promise对象
+        console.log(s)
+    </script>
+</body>
+</html>

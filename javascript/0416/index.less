@@ -1,0 +1,22 @@
+// @bgColor:green;
+/* body{
+    background-color:@bgColor;
+    
+} */
+@bgColor:green;
+@width:400px;
+@b:#box;
+@pst:position;
+@url1:"https://p3-tt.byteimg.com/origin/pgc-image/fb79545fbf4f4a54ab79c1c7d304c34b?from=pc";
+@url2:url("https://p3-tt.byteimg.com/origin/pgc-image/fb79545fbf4f4a54ab79c1c7d304c34b?from=pc");
+@bg:@bgColor;
+@{b}{
+    width:@width;
+    height:@width;
+    // background-color:@bgColor;
+    // background:url(@url1);
+    background:@url2;
+    @{pst}:absolute;
+    left:@width;
+    
+}

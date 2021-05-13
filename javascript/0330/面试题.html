@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /* 已知一个url地址
+            http://www.baidu.com?user=laowang&pass=123456&sex=nan;
+        请把查询字符串的内容以对象的形式表示出来
+            得到：{
+                user:"laowang",
+                pass:"123456",
+                sex:"nan"
+            } */
+        //首先先截取这个地址
+        var str = "http://www.baidu.com?user=laowang&pass=123456&sex=nan";
+        var str1 = str.slice(21);
+        console.log(str1);//"user=laowang&pass=123456&sex=nan"
+        //把字符串转数组，以&符分割
+        var arr = str1.split("&");
+        console.log(arr);// ["user=laowang", "pass=123456", "sex=nan"]
+        var arr1 = arr.splice(0, 1);//["user=laowang"]
+        var arr2 = arr.splice(0, 1);//["pass=123456"]
+        var arr3 = arr.splice(0, 1);//["sex=nan"]
+        arr1 = arr1.join().split("=");//["user", "laowang"]
+        arr2 = arr2.join().split("=");//["pass", "123456"]
+        arr3 = arr3.join().split("=");//["sex", "nan"]
+        var obj = {};
+        obj[arr1.splice(0, 1)] = arr1.splice(0, 1).toString();
+        obj[arr2.splice(0, 1)] = arr2.splice(0, 1).toString();
+        obj[arr3.splice(0, 1)] = arr3.splice(0, 1).toString();
+        console.log(obj);
+
+
+        /* 
+        已知一个查询字符串对象
+        {
+            user:"laowang",
+            pass:"123456",
+            sex:"nan"
+        }
+        已知url地址是http://www.baidu.com;
+        请把url地址和查询字符串组合 形成真正的地址：http://www.baidu.com?user=laowang&pass=123456&sex=nan;
+         
+        */
+        var obj = {
+            user: "laowang",
+            pass: "123456",
+            sex: "nan"
+        }
+        var url="http://www.baidu.com";
+        var arr4=[],arr5=[],arr6=[];
+        var arr7=Object.getOwnPropertyNames(obj);
+        console.log(arr7);//["user", "pass", "sex"]
+        arr4.push(obj[arr7[0]]);
+        arr5.push(obj[arr7[1]]);
+        arr6.push(obj[arr7[2]]);
+        arr4.unshift((arr7.splice(0,1)).toString());// ["user", "laowang"]
+        arr5.unshift((arr7.splice(0,1)).toString());// ["pass", "123456"] 
+        arr6.unshift((arr7.splice(0,1)).toString());// ["sex", "nan"]
+        var str4=arr4.join("=");//user=laowang 
+        var str5=arr5.join("=");//pass=123456
+        var str6=arr6.join("=");//sex=nan
+        url=url+"?"+str4+"&"+str5+"&"+str6;
+        console.log(url);//http://www.baidu.com?user=laowang&pass=123456&sex=nan
+    </script>
+</body>
+
+</html>

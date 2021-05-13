@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /* var n = null, m = null, a = null;
+        function fn1(m,n,a) {
+            for (a = 1; a <= n; a++) {
+                m += a;
+            }
+        } */
+
+
+
+        /* var m = null, n = null, sum = null;
+        function fn2(m, n, sum) {
+            if (n > m) {
+                n = n + m;
+                m = n - m;
+                n = n - m;
+            }
+            for (n = n; n <= m; n++) {
+                sum += n;
+            }
+        } */
+
+
+
+        /* var r=null,s=null;
+        function fn3(r){
+            s=r*r*3.14;
+        } */
+
+
+        /* var m=null,n=null;
+        function fn4(m,n){
+            if(m>=n){
+                return m;
+            }else{
+                return n;
+            }
+        } */
+
+
+        /* var x=null,y=null,z=null;
+        function fn5(x,y,z){
+            if(x>=y){
+                if(x>=z){
+                    return x;
+                }else{
+                    return z;
+                }
+            }else{
+                if(y>=z){
+                    return y;
+                }else{
+                    return z;
+                }
+            }
+        }
+        console.log(fn5(21,15,9)); */
+
+
+        var n=null,m=2;
+        function fn6(n){
+            if(n==1||n===2){
+                return true;
+            }
+            for(m=2;m<n;m++){
+                if(n%m===0){
+                    return false;
+                }
+            }
+            return true;
+        }
+        console.log(fn6(91));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="ul">
+
+    </ul>
+    <script>
+        //先声明一个函数：这个函数的返回值是一个promise对象，并且这个对象成功的话还要返回数据
+        function fn() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const arr = [1, 2, 3, 4, 5];
+                    resolve(arr);
+                    // reject();
+                }, 1000)
+            });
+        }
+
+        btn.onclick = async function () {
+            try {
+                //点击之后就要拿到数据，那么就调用函数来拿数据
+                const re = await fn();
+                const arr = re.map((item, index, re) => {
+                    return `<li>${item}</li>`;
+                });
+                ul.innerHTML = arr.join("");
+            } catch {
+                document.body.innerHTML=`<h1>网络错误，请稍后重试</h1>`
+            }
+        }
+    </script>
+</body>
+
+</html>

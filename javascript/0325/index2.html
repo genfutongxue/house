@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //定义一个函数
+        function fn(name, age, add) {
+            alert("我是" + name);
+            alert("我已经" + age + "岁了");
+            alert("我来自" + add);
+        }
+        //启用这个函数
+        fn("kangkang", "15", "jiangxi");
+        //申明一个函数的方式：
+        function x() {
+
+        }//直接申明
+        var x = function () {
+
+        }//这种是函数表达式，把匿名函数赋值给x，从而进行应用
+        var x = new Function(a, b, c, d, f);//这种是构造函数，括号前面的为形式参数，最后一位就为表达式
+        var s = new Function(a);//只有一位的时候就认为是表达式
+    </script>
+</body>
+
+</html>

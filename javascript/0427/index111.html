@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function fn(){console.log(arguments)}
+        // let fn=()=>{console.log(arguments)};//不能用arguments
+        // fn(1);
+
+
+        function Fn1(){};
+        function Fn2(){};
+        let a=Fn1.__proto__===Fn2.__proto__;
+        console.log(a);
+        let b=Fn1.__proto__===Function.__proto__;
+        console.log(b);
+        let c=Fn1.toString();
+        console.log(c);
+        let d=Object.toString(Fn1);
+        console.log(d);
+        let e=Object.prototype.toString(Fn1);
+        console.log(e);
+    </script>
+</body>
+</html>

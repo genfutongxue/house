@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //1.求整数1～100的累加值，但要求碰到个位为3的数则停止累加
+            leijia:
+            for(var a=1,b=0;a<101;a++){
+                if(a%10===3){
+                    break leijia;
+                }
+                b+=a;
+            }
+            console.log(b);
+
+
+            //2.求整数1～100的累加值，但要求跳过所有个位为3的数
+            for(var a=1,b=0;a<101;a++){
+                if(a%10===3){
+                    continue;
+                }
+                b+=a;
+            }
+            console.log(b);
+
+
+            //3.求1-100之间不能被7整除的整数的和（用continue）
+            for(var a=1,b=0;a<101;a++){
+                if(a%7===0){
+                    continue;
+                }
+                b+=a;
+            }
+            console.log(b);
+
+
+            //4.求200-300之间所有的奇数的和（用continue）
+            for(var a=200,b=0;a<=300&&a>=200;a++){
+                if(a%2===0){
+                    continue;
+                }
+                b+=a;
+            }
+            console.log(b);
+
+
+            //5.求200-300之间第一个能被7整数的数（break）
+            zhao:
+            for(var a=200;a>=200&&a<=300;a++){
+                if(a%7===0){
+                    break zhao;
+                }
+            }
+            console.log(a);
+        </script>
+    </body>
+</html>

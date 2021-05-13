@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fast(arr){
+            if(arr.length<=1){
+                return arr;
+            }
+            let left=[];
+            let right=[];
+            const re=arr.pop();
+            arr.forEach(function (item){
+                if(item<re){
+                    left.push(item);
+                }else{
+                    right.push(item);
+                }
+            });
+            // return fast(left).concat(re,fast(right));
+            return [...fast(left),re,...fast(right)];
+        }
+        const a=[5, 100, 6, 3, -12];
+        console.log(fast(a))
+    </script>
+</body>
+</html>

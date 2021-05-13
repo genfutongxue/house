@@ -1,0 +1,91 @@
+<doctype html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #big {
+                position: relative;
+                width: 100%;
+                height: 752px;
+                background-color: gray;
+            }
+
+            #small {
+                position: absolute;
+                width: 55px;
+                height: 55px;
+                border-radius: 19px;
+                background-color: #FF6900;
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+                line-height: 54px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="big">
+            <div id="small">
+                米
+            </div>
+        </div>
+        <script>
+            /* var oBig = document.getElementById("big");
+            var oSmall = document.getElementById("small");
+            var x = 0, y = 0, xflag = true, yflag = true;
+            setInterval(function () {
+                if (xflag) {
+                    x++;
+                    if (x >= oBig.clientWidth - oSmall.offsetWidth) {
+                        xflag = !xflag;
+                    }
+                } else {
+                    x--;
+                    if (x <= 0) {
+                        xflag = !xflag;
+                    }
+                }
+                oSmall.style.left = x + "px";
+            }, 1);
+            setInterval(function () {
+                if (yflag) {
+                    y++;
+                    if (y >= oBig.clientHeight - oSmall.offsetHeight) {
+                        yflag = !yflag;
+                    }
+                } else {
+                    y--;
+                    if (y <= 0) {
+                        yflag = !yflag;
+                    }
+                }
+                oSmall.style.top = y + "px";
+            }, 1); */
+
+
+            var oBig = document.getElementById("big");
+            var oSmall = document.getElementById("small");
+            var x = 0;
+            var y = 0;
+            var baseX = 1;
+            var baseY = 1;
+            setInterval(function () {
+                x = x + baseX;
+                y = y + baseY;
+                if (x > (oBig.clientWidth - oSmall.offsetWidth) || x < 1) {
+                    baseX = -1 * baseX;
+                }
+                if (y > (oBig.clientHeight - oSmall.offsetHeight) || y < 1) {
+                    baseY = -1 * baseY;
+                }
+                oSmall.style.left = x + "px";
+                console.log(oSmall.style.left);
+                oSmall.style.top = y + "px";
+            }, 1);
+        </script>
+    </body>
+
+    </html>
+</doctype>

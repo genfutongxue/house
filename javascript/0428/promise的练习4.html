@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        需求： 同时请求三个数据，全部请求成功了，才OK，只要有一个失败，就失败
+        */
+
+        
+        const promise=new Promise((revolse,reject)=>{
+            let num=0;
+            setTimeout(()=>{
+                // console.log(1);
+                // reject();
+                num++;
+                if(num===3){
+                    revolse();
+                }
+            },1000);
+            setTimeout(()=>{
+                // console.log(2);
+                // reject();
+                num++;
+                if(num===3){
+                    revolse();
+                }
+            },2000);
+            setTimeout(()=>{
+                // console.log(3);
+                // reject();
+                num++;
+                if(num===3){
+                    revolse();
+                }
+            },3000);
+        });
+        promise.then(()=>{
+            console.log("全部加载完成")
+        }).catch(()=>{
+            console.log("加载失败")
+        });
+    </script>
+</body>
+</html>

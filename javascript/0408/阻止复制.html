@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <span id="span">我是一个好人，你知道吗？</span>
+    <script>
+        var oSpan = document.getElementById("span");
+        document.onkeydown = function (e) {
+            if (e.ctrlKey && e.keyCode === 67) {
+                e.preventDefault();
+                console.log(e);
+            }
+        }
+    </script>
+</body>
+
+</html>

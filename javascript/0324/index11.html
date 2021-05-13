@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /*用户打开有两个弹窗，分别输入账号名和密码，如果账号名或密码不正确，则一直提示用户输入
+        可以输入的弹窗是prompt方法，prompt返回值就是输入的内容*/
+        /* var zhanghao=prompt("账号");
+        var mima=prompt("密码");
+        while(zhanghao!="lipeihua"||mima!="123456"){
+            zhanghao=prompt("账号");
+            mima=prompt("密码");
+        } */
+        // alert("welcome");
+        //函数
+        /* function check(){
+            var zhanghao=prompt("账号");
+            var mima=prompt("密码");
+            if(zhanghao!="lipeihua"||mima!="123456"){
+                check();
+            }
+        }
+        check();
+        alert("22"); */
+        function check() {
+            var zh = prompt("账号"),
+                mm = prompt("密码");
+            if(zh!="lipeihua"||mm!="123"){
+                check();
+            }
+        }
+        check();
+        alert("222");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- 外部引入js方法 -->
+        <!-- 有defer和async两个属性 -->
+        <!-- defer属性意思是异步下载js文件和执行html，等html执行完成后再执行js -->
+        <!-- async属性的意思是异步下载js文件和执行html，当js文件下载完成后停止执行html，立马执行js，等js执行完成后再执行html -->
+        <!-- 如果<script src="./1.js" defer></script>里面嵌套了js代码，那么会被忽略，只会执行外部下载的js代码 -->
+        <script src="./1.js" defer></script>
+    </head>
+    <body>
+        <script>
+            function fn(){
+                a=1;
+                return a;
+            }
+            console.log(fn());
+            //这个时候用的a因为没有被声明，所以用的是隐式的全局变量a。
+
+
+            var a=52,b=38;
+            //让a和b的值互换的两种发放：
+            /* a=a+b;
+            b=a-b;
+            a=a-b;
+            console.log(a,b); */
+
+            var sum=a+b;
+            a=sum-a;
+            b=sum-b;
+            console.log(a,b);
+
+            //加法运算符：只要出现字符串或者object就会进行字符拼接，只有在没有字符串或者对象的时候加法运算才会转成数字运算
+            //当任何东西前面加一个+的时候，都会把它转为数字。
+            var a=["a","b"];
+            console.log(1+a);
+        </script>
+    </body>
+</html>

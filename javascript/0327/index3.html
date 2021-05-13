@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //十进制转二进制
+        function to2(shuzi) {
+            var kong = [];
+            var a = null;
+            var z = "";
+            while(shuzi>0){
+                a=shuzi%2;
+                kong.push(a);
+                shuzi=parseInt(shuzi/2);
+            }
+            while(kong.length>0){
+                z=z+kong.pop();
+            }
+            return z;
+        }
+        console.log(to2(100));
+
+
+        //十进制转八进制
+        //做一个函数让数字去计算，的到余数然后放到一个空数值里，然后再把里面的值一个一个拿出来拼接成一个字符串
+        function eight(number){
+            var 
+            a=[],
+            b=null,
+            c="";
+            while(number>0){
+                b=number%8;
+                a.push(b);
+                number=parseInt(number/8);
+            }
+            while(a.length>0){
+                c=c+a.pop();
+            }
+            return c;
+        }
+        console.log(eight(50));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //深克隆
+        function check(obj){
+            return Object.prototype.toString.call(obj).toLowerCase().slice(8,-1);
+        }
+        
+        function deepClone(obj){
+            if(check(obj)!=="object"||check(obj)!=="array"){
+                return obj;
+            }
+            if(check(obj)==="object"){
+                var newObj={}
+            }
+            if(check(obj)==="array"){
+                var newObj=[];
+            }
+            for(let key in obj){
+                newObj[key]=check(obj[key]);
+            }
+            return newObj;
+        }
+
+        
+    </script>
+    
+</body>
+
+</html>

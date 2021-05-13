@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="outer">
+            <div id="center">
+                <div id="inner">
+                    最里面
+                </div>
+            </div>
+        </div>
+        <script>
+            var oOuter=document.getElementById("outer");
+            //innnerHTML,innerText,textContent用的比较多
+
+            //innerHTML获取和设置元素的内容:会解析标签
+            console.log(oOuter.innerHTML);
+            oOuter.innerHTML="<a href='#'>链接</a>";
+            console.log(oOuter);
+
+            //innerText:不会解析标签
+            console.log(oOuter.innerText);
+            oOuter.innerText="<a href='#'>链接</a>";
+            console.log(oOuter);
+
+            //textContent设置和获取元素内容:和innerText一样，不会解析标签，但是会获取到空格、换行等
+            console.log(oOuter.textContent);
+            oOuter.textContent="<a href='#'>链接</a>";
+            console.log(oOuter);
+
+            //outerHTML:会获取和解析标签，跟innerHTML一样
+            /* console.log(oOuter.outerHTML);
+            oOuter.outerHTML="<a href='#' id='hello'>haha</a>";
+            console.log(oOuter);//这时候页面已经被别的替代了，但是还是能获取到，只是不能进行操作了
+            var oHello=document.getElementById("hello");
+            console.log(oHello);//可以操作新赋值的标签 */
+
+            //outerText:不会获取和解析标签，跟innerText一样,和outerHTML一样，已经被取代了，不能进行操作了
+            /* console.log(oOuter.outerText);
+            oOuter.outerText="<a href='#'>nihao</a>"; */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #big {
+            width: 600px;
+            margin: 0 auto;
+            border: 1px solid green;
+            cursor: pointer;
+        }
+
+        #p {
+            width: 100%;
+            height: 100px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            color: green;
+        }
+
+        #div {
+            width: 100%;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            background-color: lightgray;
+            line-height: 50px;
+        }
+
+        #city {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: yellowgreen;
+            display: none;
+        }
+
+        #city>li {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="big">
+        <p id="p">
+            您选择的城市
+        </p>
+        <div id="div">
+            点击我选择城市
+        </div>
+        <ul id="city">
+            <li>深圳</li>
+            <li>珠海</li>
+            <li>云浮</li>
+            <li>韶关</li>
+            <li>中山</li>
+            <li>佛山</li>
+            <li>惠州</li>
+            <li>东莞</li>
+            <li>广州</li>
+        </ul>
+    </div>
+    <script>
+        var oP = document.getElementById("p");
+        var oDiv = document.getElementById("div");
+        var oCity = document.getElementById("city");
+        var oLis = document.querySelectorAll("#city>li");
+        /* oDiv.onclick=function(){
+            oCity.style.display="flex";
+        }
+        oCity.onclick=function(e){
+            if(e.target.nodeName==="LI"){
+                oP.textContent=e.target.textContent;
+            }
+        } */
+        document.onclick = function (e) {
+            if (e.target.id === "div") {
+                oCity.style.display = "flex";
+                return;
+            }
+            if (e.target.nodeName === "LI" && e.target.parentNode.id === "city") {
+                oP.textContent = e.target.textContent;
+                oCity.style.display = "none";
+                return;
+            }
+            oCity.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

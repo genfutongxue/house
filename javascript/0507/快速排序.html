@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //快速排序
+
+        const arr=[0,12,12,3,1,2,3,1,5,3,2,0,0,3,1,2,3,1,1,3,1,3,1,4,23,53,21,4,1,2];
+
+
+        function fn(arr){
+            if(arr.length<=1){
+                return arr;
+            }
+            let left=[];
+            let right=[];
+            const x = arr.pop();
+            arr.forEach((item,index)=>{
+                if(x<item){
+                    right.push(item);
+                }else{
+                    left.push(item);
+                }
+            })
+            let re=[...fn(left),x,...fn(right)];
+            return re;
+        }
+        console.log(fn(arr));
+    </script>
+</body>
+</html>

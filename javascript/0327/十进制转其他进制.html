@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //十进制转其他进制
+        //a为数字，b为几进制
+        function too(a, b) {
+            /* var q=[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"]; */
+            var q="0123456789abcdef";
+            var x = [],
+                y = "";
+            while (a > 0) {
+                x.push(q[a % b]);
+                a = parseInt(a / b);
+            }
+            while(x.length>0){
+                y+=x.pop();
+            }
+            return y;
+        }
+    </script>
+</body>
+
+</html>

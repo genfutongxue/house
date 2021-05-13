@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form class="form">
+            <input class="input" type ="text" user="name">
+            <button class="btn" type="submit">按钮</button>
+        </form>
+        <p>你是最帅的仔仔！</p>
+        <script>
+            //表单默认提交、右键菜单、选中文字
+            document.oncontextmenu=function(e){
+                /* e.preventDefault(); */
+                return false;
+            }
+
+            /* var oForm=document.getElementsByClassName("form");
+            oForm[0].onsubmit=function(e){
+                e.preventDefault();
+            } */
+
+            
+            document.onmousemove=function(e){
+                e.preventDefault();
+            }
+            
+        </script>
+    </body>
+</html>

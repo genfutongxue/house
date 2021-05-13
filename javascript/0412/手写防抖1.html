@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //手写防抖：在一定的事件内，不让触发的事件执行，在这个时间里面如果继续触发就重新计算时间，超过了这个时间才执行需要的函数
+        function fangdou() {
+            var timer = null;
+            return function () {
+                clearTimeout(timer);
+                var _this = this;
+                var agr = agruments[0];
+                timer = setTimeout(function () {
+                    fn.call(_this, agr);
+                }, time);
+            }
+        }
+    </script>
+</body>
+
+</html>

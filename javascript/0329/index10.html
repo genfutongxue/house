@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //数组转换方法：
+            //toString方法：除了null和undefined,其他都有自己的toString方法
+            //返回的值就是转换成的字符串，并不会影响原数组
+            var arr1=[21,43,57,52,3,68];
+            var a=arr1.toString();//去中括号加引号，所以逗号还在
+            console.log(a);
+            console.log(arr1);
+            //join()方法：
+            //格式：join(),括号里面可以加内容，加上的东西就会取代逗号，当加上它的时候（""），就会把逗号去掉了
+            //返回的值就是转换成的字符串，并不会影响原数组
+            var b=arr1.join("");
+            console.log(b);
+            console.log(arr1);
+
+
+            //把字符串转为数组用它的split方法，可以通过转换把字符串实行逆转。
+            var hello="kjbbllmoivwexz";
+            //先把字符串转为数组
+            var l=hello.split("");
+            console.log(hello);//hello是不变的
+            console.log(l);//返回的值变为数组
+            //把数组内容反转
+            k=l.reverse();
+            console.log(k);
+            //用join把数组转换为字符串
+            var world=k.join("");
+            console.log(world);
+        </script>
+    </body>
+</html>

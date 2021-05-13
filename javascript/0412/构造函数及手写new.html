@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /* function Fn(){
+            return [{}];
+        }
+        var re=new Fn()
+        console.log(re); */
+        //构造函数有返回值且返回值为对象类型时，new之后返回的是函数的返回值
+
+        /* function Fn() {
+            return 32;
+        }
+        var re1 = new Fn();
+        console.log(re1); */
+        //构造函数返回基本类型值时，那么new之后返回的就是实例化对象
+
+
+        /*
+        new到底做了什么？
+            - 返回了一个对象
+            - 让这个对象的隐式原型指向构造函数的原型对象（构造函数的prototype）
+            - 构造函数的this指向实例化对象
+            - 判断构造函数的返回值是什么类型
+        */
+        //手写new：
+        function Fn() {
+
+        }
+        function newFun(f) {
+            var obj = {};
+            obj.__proto__ = f.prototype;
+            var agr=Array.from(arguments).slice(1);
+            var re=f.apply(obj,agr);
+            if (typeof f() === "object" && f() !== null || typeof f() === "function"){
+                return re;
+            }else{
+                return obj;
+            }
+                
+        }
+        console.log(newFun(Fn));
+    </script>
+</body>
+
+</html>

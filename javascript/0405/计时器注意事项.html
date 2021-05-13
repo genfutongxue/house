@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            /* for(var i=0;i<5;i++){
+                setTimeout(function(){
+                    console.log(i);//会打印5次5;因为计时器执行是异步的，所以打印的时候for循环已经执行完成了，i就是5了
+                },0);
+            } */
+            for(var i=0;i<5;i++){
+                (function(i){
+                    var a=setTimeout(function(){
+                        console.log(i);//用一个变量保存住循环的每一次i的值，这样后面计时器执行的时候就会获取到相对于的i的值了
+                    },0);
+                    console.log(a);
+                })(i);
+            }
+        </script>
+    </body>
+</html>

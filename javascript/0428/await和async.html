@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //   需求: 当异步操作a完成之后, 执行异步操作b, b完成之后, 执行异步操作c
+        //用promise和await和async来写
+        async function fn(){
+            await fn1();
+            await fn2();
+            await fn3();
+            await console.log("全部完成了");
+        }
+        fn()
+
+        function fn1(){
+            return new Promise((revolse,reject)=>{
+                setTimeout(()=>{
+                    console.log("a完成了");
+                    revolse();
+                },1000);
+            });
+        }
+
+        function fn2(){
+            return new Promise((revolse,reject)=>{
+                setTimeout(()=>{
+                    console.log("b完成了");
+                    revolse();
+                },1000);
+            });
+        }
+
+        function fn3(){
+            return new Promise((revolse,reject)=>{
+                setTimeout(()=>{
+                    console.log("c完成了");
+                    revolse();
+                },1000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写instanceof</title>
+</head>
+<body>
+    <script>
+        //A instanceof B
+        //检测B的原型对象是否在A的原型链上
+        function haha(A,B){
+            var oA=A.__proto__;
+            while(oA){
+                if(oA===B.prototype){
+                    return true;
+                }
+                oA=oA.__proto__;
+            }
+            return false;
+        } 
+    </script>
+</body>
+</html>

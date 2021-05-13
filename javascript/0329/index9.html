@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <button id="btn1">默认id排序</button>
+    <button id="btn2">价格降序</button>
+    <button id="btn3">热度降序</button>
+    <ol id="ol"></ol>
+    <script>
+        //1.获取数据
+        var data = [{
+            brand: "苹果手机",
+            id: "1",
+            price: "11988",
+            hot: "199"
+        },
+        {
+            brand: "联想手机",
+            id: "2",
+            price: "1988",
+            hot: "1199"
+        },
+        {
+            brand: "华为手机",
+            id: "3",
+            price: "12988",
+            hot: "1299"
+        },
+        {
+            brand: "三星手机",
+            id: "4",
+            price: "7988",
+            hot: "3199"
+        },
+        {
+            brand: "魅族手机",
+            id: "5",
+            price: "988",
+            hot: "1099"
+        },
+        {
+            brand: "小米手机",
+            id: "6",
+            price: "19988",
+            hot: "109"
+        },
+        {
+            brand: "锤子手机",
+            id: "7",
+            price: "88",
+            hot: "199999"
+        },
+        ];
+        //2.获取元素
+        var oBtn1 = document.getElementById("btn1");
+        var oBtn2 = document.getElementById("btn2");
+        var oBtn3 = document.getElementById("btn3");
+        var oOl = document.getElementById("ol");
+        //3.每次重新渲染之前，先清空当前的内容
+        function show() {
+            oOl.innerHTML = "";
+            //4.给ul加上需要的内容,做一个循环，让它生成全部的内容
+            for (var i = 0; i < data.length; i++) {
+                var content =
+                    "<li>\
+                    <h2> "+ data[i].brand + "</h2>\
+                    <p>价格<span>"+ data[i].price + "</span></p>\
+                    <p>热度<span>"+ data[i].hot + "</span></p>\
+                    <p>id<span>"+ data[i].id + "</span></p>\
+                    </li > ";
+                oOl.innerHTML = oOl.innerHTML + content;
+            }
+        }
+        //调用这个函数
+        show();
+        //开始排序：
+        oBtn1.onclick = function () {
+            data.sort(function (a, b) {
+                return a.id - b.id;
+            });
+            show();
+        }
+        oBtn2.onclick = function () {
+            data.sort(function (a, b) {
+                return b.price - a.price;
+            });
+            show();
+        }
+        oBtn3.onclick = function () {
+            data.sort(function (a, b) {
+                return b.hot-a.hot;
+            });
+            show();
+        }
+
+
+    </script>
+</body>
+
+</html>

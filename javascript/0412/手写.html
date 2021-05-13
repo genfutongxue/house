@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //new
+        function WriteNew(fn) {
+            var obj = {};
+            obj.__proto__ = fn.prototype;
+            var agr = Array.from(arguments).alice(1);
+            var re = fn.call(obj, agr);
+            if (typeof re === "object" && re !== null || typeof re === "function") {
+                return re;
+            }
+            return obj;
+        }
+
+
+
+        //节流
+        function throttle(fn,time){
+            var lastTime=0;
+            return function(){
+                var now=Date.now();
+                if(now-lastTime<time){
+                    return;
+                }
+                lastTime=now;
+                fn.call(this,arguments[0]);
+            }
+        }
+
+
+
+
+        //防抖
+        function debounce(fn,time){
+            var timer=null;
+            return function(){
+                clearTimeout(timer);
+                var _this=this;
+                var arg=arguments[0];
+                timer=setTimeout(function(){
+                    fn.call(_this,arg);
+                },time);
+            }
+        }
+    </script>
+</body>
+
+</html>

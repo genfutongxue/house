@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #image{
+            width:200px;
+            height:200px;
+            padding:20px;
+            border:10px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./01.png" id="image">
+    <script>
+        //加在window上
+        /* window.onload = function () {
+            var oImage = document.getElementById("image");
+            var a = oImage.offsetWidth;
+            console.log(a);
+        } */
+        //加在img上
+        var oImage = document.getElementById("image");
+        oImage.onload=function(){
+            var a = oImage.offsetWidth;
+            console.log(a);
+            var b=oImage.clientWidth;
+            console.log(b);
+            var c=oImage.offsetHeight;
+            var d=oImage.clientHeight;
+            console.log(c,d);
+        }
+        var x=document.documentElement.clientWidth;
+        var y=document.documentElement.clientHeight;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        function Parent(a, b, c) {
+            this.A = a;
+            this.B = b;
+            this.C = c;
+        }
+        Parent.prototype.f = function () {
+            this.F = f;
+        }
+
+        Son.prototype = new Parent();
+        Son.prototype.constructor = Son;
+        function Son(d, a, b, c) {
+            this.D = d;
+            Parent.call(this,a,b,c)
+        }
+    </script>
+</body>
+
+</html>

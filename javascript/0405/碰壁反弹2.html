@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #big {
+            position: relative;
+            width: 1350px;
+            height: 680px;
+            background-color: gray;
+        }
+
+        #small {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            border-radius: 19px;
+            background-color: #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="big">
+        <div id="small"></div>
+    </div>
+
+    <script>
+        var oSmall = document.getElementById("small");
+        var oBig = document.getElementById("big");
+        var x = 0;
+        var y = 0;
+        var baseX = 1;
+        var baseY = 1;
+        setInterval(function () {
+            x += baseX;
+            y += baseY;
+            if (x > oBig.clientWidth - oSmall.offsetWidth || x < 1) {
+                baseX = -baseX;
+                console.log(x);
+            }
+            if (y > oBig.clientHeight - oSmall.offsetHeight || y < 1) {
+                baseY = -baseY;
+            }
+            oSmall.style.left = x + "px";
+            oSmall.style.top = y + "px";
+        }, 1);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #ball{
+                position:fixed;
+                top:300px;
+                left:0;
+                width:50px;
+                height:50px;
+                border-radius:50%;
+                background-color:yellowgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ball"></div>
+        <script>
+            var oBall=document.getElementById("ball");
+            var x=0,starty=300;y=0;
+            setInterval(function(){
+                x++;
+                y=starty-Math.sin(Math.PI*2*x/360)*200;
+                oBall.style.top=y+"px";
+                oBall.style.left=x+"px";
+            },100/6);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun(n, o) {
+            console.log(o)
+            return {
+                fun: function (m) {
+                    return fun(m, n)
+                }
+            }
+        }
+        var a = fun(0)//undefined
+        a.fun(1)//0
+        a.fun(2)//0
+        a.fun(3) //0
+        //上面的这些只是调用了a的fun方法，那么调用方法就不会改变a的方法
+
+        var b = fun(0).fun(1).fun(2).fun(3) //undefined,0,1,2
+        // 上面的因为是一直在调用里面的方法，所以用到的是每一层里面的对象方法
+
+
+        var c = fun(0).fun(1)//undefined,0
+        c.fun(2)//1
+        c.fun(3) //1
+
+
+        //考察作用域，闭包
+    </script>
+</body>
+
+</html>

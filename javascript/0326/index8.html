@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /* var a=9;
+        function outer(){
+            a=199;
+            //在函数里面没有a，那么它用的就是全局变量的a，并且还把它的值更改了
+            alert(a);//199
+        }
+        outer();
+        //这个时候。因为已经执行完成了上面的那个函数，所以a的值已经被改成了199了
+        alert(a);//199 */
+        /* var v = "hello";
+        if (true) {
+            alert(v);//hello
+            var v = "world";
+        }
+        alert(v);//world */
+
+        /* function rain() {
+            var x = 1;
+
+            function man() {
+                x = 100;
+            }
+            man();
+            alert(x);//100
+        }
+        rain(); */
+
+        /* var x = 1;
+
+        function rain() {
+            alert(x);//undefined
+            var x = 'man';
+            alert(x);//man
+        }
+        rain() */
+
+        /* function rain() {
+            
+            var x = 100;
+        }
+        rain();
+        alert(x);//没有反应，因为找不到X,如果console.log(x)那就是x is not defined
+        console.log(x);  */
+
+
+        /* var t = 'a';
+
+        function test2() {
+            alert(t);//undefined
+            var t = 'b';
+            alert(t);//b
+        }
+        test2(); */
+
+
+        /* var t = 'a';
+
+        function test2() {
+            alert(t);//a
+            t = 'b';
+            alert(t);//b
+        }
+        alert(t);//a
+        test2();
+        alert(t);//b */
+
+
+        /* var a = "Hello";
+
+        function test() {
+            alert(a);//Hello
+            a = "World";
+            alert(a);//World
+        }
+        test(); */
+
+
+        /* var a = 1;
+
+        function test() {
+            alert(a);//undefined
+            a = 4;
+            alert(a)//4
+            var a = 2;
+            alert(a);//2
+        }
+        test();
+        alert(a);//1 */
+    </script>
+</body>
+
+</html>

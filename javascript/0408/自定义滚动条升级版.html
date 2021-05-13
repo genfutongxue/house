@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #outer {
+            position: fixed;
+            height: 100%;
+            width: 20px;
+            top: 0;
+            right: 0;
+            background-color: blanchedalmond;
+        }
+
+        #inner {
+            position: absolute;
+            width: 20px;
+            height: 60px;
+            right: 0;
+            top: 0;
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+
+    </div>
+    <div id="outer">
+        <div id="inner">
+
+        </div>
+    </div>
+    <script>
+        var oContent = document.getElementById("content");
+        var oOuter = document.getElementById("outer");
+        var oInner = document.getElementById("inner");
+        //用for循环生成内容
+        for (var i = 0; i < 150; i++) {
+            oContent.innerHTML += i + "<br>";
+        }
+        //设置滑块滚动
+        oInner.onmousedown = function (e) {
+            //鼠标离滑块的距离：
+            var mouseToInner = e.offsetY;
+            document.onmousemove = function (e) {
+                e.preventDefault();
+                //求出滑块的位置：（就是滑块离最上面的距离）
+                var innerLocation = e.clientY - mouseToInner;
+                if (innerLocation <= 0) {
+                    innerLocation = 0;
+                } else if (innerLocation >= oOuter.clientHeight - oInner.offsetHeight) {
+                    innerLocation = oOuter.clientHeight - oInner.offsetHeight;
+                }
+                oInner.style.top = innerLocation + "px";
+                //设置内容移动：
+                //文档总共可以走的距离：文档的总高度-视口的总高度
+                var conMoveAll = oContent.offsetHeight - document.documentElement.clientHeight;
+                //滑块总共可以走的距离：滑槽的高度-滑块的高度
+                var innerMoveAll = oOuter.clientHeight - oInner.offsetHeight;
+                //文档总共可以走的距离/文档当前走的距离=滑块总共可以走的距离/滑块走的距离
+                var conMove = conMoveAll / innerMoveAll * innerLocation;
+                oContent.style.marginTop = -conMove + "px";
+            }
+            document.onmouseup = function () {
+                //当鼠标抬起的时候就要把移动事件清除
+                document.onmousemove = null;
+                //因为每次点击都会生成一个鼠标抬起事件，所以在完成这次事件时就要清掉当前的事件，防止多余事件产生
+                document.onmouseup = null;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //replace:匹配字符串的内容进行替换
+            var str="我帅哥，我帅哥，我真的很有钱";
+            var str1=str.replace("帅哥","**");
+            console.log(str1);//简单使用的话只能替换一次
+            //搭配正则表达式来使用的话，可以全部替换，而且可以替换多个
+            var x=/帅哥|有钱/gi;
+            var str2=str.replace(x,"**");
+            console.log(str2);
+        </script>
+    </body>
+</html>

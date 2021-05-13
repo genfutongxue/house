@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            background-color: darkgoldenrod;
+        }
+
+        #dm {
+            height: 200px;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #name {
+            height: 500px;
+            color: #fff;
+            font-size: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dm">开始点名</div>
+    <div id="name"></div>
+    <script>
+        var oDm = document.getElementById("dm");
+        var oName = document.getElementById("name");
+        var names = ["小红", "小王", "小李", "小张", "小郑", "快乐", "阿孔萨妮", "dkld", "看来", "健康的分"];
+        var flag = false;
+        oDm.onclick = function () {
+            if (flag) {
+                clearInterval(timer);
+            } else {
+                timer = setInterval(function () {
+                    oName.textContent = names[Math.floor(Math.random() * names.length)];
+                }, 10);
+            }
+            flag=!flag;
+        }
+    </script>
+</body>
+
+</html>

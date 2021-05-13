@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //获取窗口的高度和宽度
+            //在ie6中窗口的的根元素为body，所以窗口的高度为body的clientWidth,clientHeight
+            /* console.log(document.body.clientHeight);
+            console.log(document.body.clientWidth); */
+            //在非ie6中，认为窗口的根元素为html，所以窗口的高度为html的clientWidth,clientHeight
+            console.log(document.documentElement.clientWidth);
+            console.log(document.documentElement.clientHeight);
+        </script>
+    </body>
+</html>

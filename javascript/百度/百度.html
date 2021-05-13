@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            text-decoration:none;
+        }
+
+        body {
+            width: 100%;
+            min-width: 1280px;
+        }
+
+        /* 头部开始 */
+        #top {
+            width: 100%;
+            height: 60px;
+            font-size: 13px;
+        }
+
+        #top #left,
+        #top #right {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #top #left {
+            float: left;
+            padding-left: 24px;
+        }
+
+        #top #left li {
+            margin: 0;
+            margin-right: 31px;
+            height: 60px;
+            line-height: 60px;
+            float: left;
+        }
+
+        #top #right {
+            float: right;
+            padding-right: 24px;
+        }
+
+        #top a {
+            text-decoration: none;
+            color: #222;
+        }
+
+        #top a:hover {
+            color: #315efb;
+        }
+
+        #top #right li {
+            margin: 0;
+            margin-left: 32px;
+            height: 60px;
+            line-height: 60px;
+            float: left;
+        }
+
+        #top #right li.denglu a {
+            display: inline-block;
+            margin: 18px 0;
+            color: #fff;
+            border-radius: 6px;
+            background-color: #315efb;
+            width: 48px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        /* 头部结束 */
+        /* Logo部分 */
+        .logo{
+            position:relative;
+            width:100%;
+            height:129px;
+            font-size:0;
+        }
+        .logo a{
+            position: absolute;
+            left:50%;
+            bottom:15px;
+            transform:translateX(-50%);
+            width: 270px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+        }
+        /* logo部分结束 */
+        /* 搜索框开始 */
+        .search{
+            width:654px;
+            height:44px;
+            margin:0 auto;
+        }
+        .search input{
+            width:546px;
+            height:44px;
+            box-sizing:border-box;
+            border:2px solid #c4c7ce;
+            border-right:none;
+            border-radius:10px 0 0 10px;
+        }.search a{
+            width:108px;
+            height:44px;
+            background-color:#4e6ef2;
+            border-radius:0 10px 10px 0;
+            float:right;
+            color:#fff;
+            font-size:17px;
+            text-decoration:none;
+            text-align:center;
+            line-height:44px;
+        }
+        /* 搜索框结束 */
+        /* 热搜开始 */
+        .hotSearch-title{
+            width:654px;
+            height:24px;
+            margin:45px auto 4px;
+        }
+        .hotSearch-title a:first-child{
+            color:#222;
+            font-size:14px;
+            float:left;
+            line-height:24px;
+        }
+        .hotSearch-title a:last-child{
+            color:#9195a3;
+            font-size:13px;
+            float:right;
+            line-height:24px;
+        }
+        .hotSearch-title a:last-child:hover{
+            color:#315efb;
+        }
+        /* 热搜结束 */
+        /* 热搜内容开始 */
+        .hotSearch-content{
+            width:654px;
+            margin:0 auto;
+            padding:0;
+            overflow:hidden;
+        }
+        .hotSearch-content .hotSearch-item{
+            width:268px;
+            height:32px;
+            list-style-type:none;
+            float:left;
+            font-size:14px;
+        }
+        .hotSearch-content .hotSearch-item.odd{
+            margin-right:59px;
+        }
+        .hotSearch-content .hotSearch-item.even{
+            margin-left:59px;
+        }
+        .hotSearch-content .hotSearch-item span{
+            color:#222;
+            line-height:32px;
+        }
+        .hotSearch-content .hotSearch-item span:hover{
+            color:#315efb;
+        }
+        .hotSearch-content .hotSearch-item .title-content{
+            width:100%;
+            height:100px;
+            display:block;
+        }
+        .hotSearch-content .hotSearch-item .title-content span:first-child{
+            display:inline-block;
+            width:18px;
+            height:32px;
+            margin-right:2px;
+        }
+        #hot1{
+            color:#f12d46;
+        }
+        #hot2{
+            color:#ff6600;
+        }
+        #hot3{
+            color:#faa90e;
+        }
+        /* 热搜内容结束 */
+        /* 右下角侧边栏开始 */
+        /* 右下角侧边栏结束 */
+        /* 脚部部分开始 */
+        footer{
+            width:100%;
+            height:39px;
+            overflow:hidden;
+            position:fixed;
+            bottom:0;
+            left:0;
+            text-align:center;
+        }
+        footer a{
+            color:#bbb;
+            font-size:12px;
+            height:100%;
+            display:inline-block;
+            margin-right:18px;
+            line-height:39px;
+        }
+        footer a:hover{
+            color:#315efb;
+        }
+        /* 脚部部分结束 */
+    </style>
+</head>
+
+<body>
+    <header id="top">
+        <ul id="left">
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">hao123</a></li>
+            <li><a href="#">地图</a></li>
+            <li><a href="#">直播</a></li>
+            <li><a href="#">视频</a></li>
+            <li><a href="#">贴吧</a></li>
+            <li><a href="#">学术</a></li>
+            <li><a href="#">更多</a></li>
+        </ul>
+        <ul id="right">
+            <li><a href="#">设置</a></li>
+            <li class="denglu"><a href="#">登录</a></li>
+        </ul>
+    </header>
+    <div class="logo">
+        <a href="#">
+            <img src="./图片/baidu.png">
+        </a>
+    </div>
+    <form class="search">
+        <input type="text">
+        <a href="#">百度一下</a>
+    </form>
+    <div class="hotSearch-title">
+        <a href="#">百度热榜</a>
+        <a href="#">换一换</a>
+    </div>
+    <ul class="hotSearch-content">
+        <li class="hotSearch-item odd">
+            <a class="title-content" href="#">
+                <span class="number" id="hot1">1</span>
+                <span class="content">永远记住你</span>
+            </a>
+        </li>
+        <li class="hotSearch-item even">
+            <a class="title-content" href="#">
+                <span class="number">4</span>
+                <span class="content">肖思远母亲伏在墓碑痛哭说妈想你了</span>
+            </a>
+        </li>
+        <li class="hotSearch-item odd">
+            <a class="title-content" href="#">
+                <span class="number" id="hot2">2</span>
+                <span class="content">中国驻朝鲜大使馆祭奠志愿军先烈新</span>
+            </a>
+        </li>
+        <li class="hotSearch-item even">
+            <a class="title-content" href="#">
+                <span class="number">5</span>
+                <span class="content">浙江舟山一渔船沉没已致12人遇难</span>
+            </a>
+        </li>
+        <li class="hotSearch-item odd">
+            <a class="title-content" href="#">
+                <span class="number" id="hot3">3</span>
+                <span class="content">张文宏谈何时能自由出行</span>
+            </a>
+        </li>
+        <li class="hotSearch-item even">
+            <a class="title-content" href="#">
+                <span class="number">6</span>
+                <span class="content">江苏盐城重大交通事故已致11死</span>
+            </a>
+        </li>
+    </ul>
+    <div class="right-side">
+        <div class="right-side-top"></div>
+        <div class="right-side-bottom"></div>
+    </div>
+    <footer>
+        <a href="#">设为首页</a>
+        <a href="#">关于百度</a>
+        <a href="#">About Baidu</a>
+        <a href="#">百度营销</a>
+        <a href="#">使用百度前必读</a>
+        <a href="#">意见反馈</a>
+        <a href="#">帮助中心</a>
+        <a href="#">京公网安备11000002000001号</a>
+        <a href="#">京ICP证030173号</a>
+        <a href="#">©2021 Baidu</a>
+        <a href="#">(京)-经营性-2017-0020</a>
+    </footer>
+</body>
+
+</html>

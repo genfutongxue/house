@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #con{
+                outline:none;
+            }
+        </style>
+    </head>
+    <body>
+        <textarea id="con"></textarea>
+        <span id="tips">还可以输入50字</span>
+        <script>
+            var oCon=document.getElementById("con");
+            var oTips=document.getElementById("tips");
+            oCon.oninput=function(){
+                if(oCon.value.length>50){
+                    oCon.style.borderColor="red";
+                }else{
+                    oCon.style.borderColor="#000";
+                }
+                oTips.textContent="还可以输入"+(50-oCon.value.length)+"字";
+            }
+        </script>
+    </body>
+</html>

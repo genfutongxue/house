@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /*
+        手写new：
+
+        1.执行了该函数，如果该函数的返回值为基本类型值，则返回了一个实例化对象，如果为引用对象类型，则返回该函数的返回值
+        2.改变了this指向该实例化对象
+        3.实例化对象的隐式原型指向该构造函数的显示原型
+    
+        */
+        /* function Parent(){
+
+        }
+        function writeNew(fn){
+            var obj={};
+            obj.__proto__=fn.prototype;
+            var arr=Array.from(arguments).slice(1);
+            var re=fn.apply(obj,arr);
+            if(typeof re==="object"&&re!==null||typeof re==="function"){
+                return re;
+            }
+            return obj;
+        }
+        writeNew(parent) */
+
+
+
+        //new:1.返回了一个实例化对象  2.改变了构造函数的this指向并执行了构造函数  3.实例化对象的隐式原型指向构造函数的显示原型
+        function myNew(fn) {
+            let obj = {};
+            obj.__proto__ = fn.prototype;
+            let arg = Array.from(arguments).slice(1);
+            let re = fn.apply(obj, arg);
+            if(typeof re==="object"&&re!==null||typeof re==="function"){
+                return re;
+            }
+            return obj;
+        }
+    </script>
+</body>
+
+</html>

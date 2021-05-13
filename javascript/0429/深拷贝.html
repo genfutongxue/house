@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj1 = {
+            name: "laowang",
+            hobby: ["唱", "跳", "rap"],
+            eat: function () {
+                console.log("eat");
+            }
+        }
+
+
+        //把obj复制（拷贝一份）
+        //要先判断对象的键是什么类型，如果是基本类型就直接赋值，如果是引用类型中的数组或对象，那么就要再遍历他们，拿到他们里面的值去进行赋值，并且还要再次检测他们的值是什么类型，所以封装一个函数，让他们去进行递归调用
+        function checkType(obj) {
+            //调用Object的原型对象上的toString方法,检测的应该是传入的obj，所以要调用改变this指向的方法，调用call
+            return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+        }
+
+        //先封装一个函数，用来进行递归调用
+        function fn(obj) {
+            let re=checkType(obj);
+            if(re==="object"){
+                var newObj={};
+            }else if(re==="array"){
+                var newObj=[];
+            }else{
+                return obj;
+            }
+            for(const key in obj){
+                newObj[key]=fn(obj[key]);
+            }
+            return newObj;
+        }
+        let re1=fn(obj1);
+        console.log(re1.hobby===obj1.hobby);
+    </script>
+</body>
+
+</html>

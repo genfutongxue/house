@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //%取余数的意思
+            //减、乘、除遇到非数字会先转换为数字再运算
+            var s=4,a=9;
+            console.log(s*a,a/s,a-s,a+s,a%s);
+            var a="as",b=9;
+            console.log(a*b);
+            /*
+            加法：
+            1、数字跟数字相加为数字，
+            2、有字符串的则都会变为字符串进行累加，
+            3、object类型则会变为字符串进行累加
+            4、其他都会转换为数字
+            */
+            console.log(a+b);//"as9"
+            console.log(b+a);//"9as"
+            console.log(a+a);//"asas"
+            console.log(8+8);//16
+            console.log(null+1);//1
+            console.log(undefined+5);//NaN
+            console.log(true+4);//5
+            console.log(false+6);//6
+            console.log([]+4);//"4"
+            console.log(function(){}+5);//"function(){}5"
+
+        </script>
+    </body>
+</html>

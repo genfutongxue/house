@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //手写call:1.改变了函数的this指向  2.执行改变了this指向的函数  3.传入的参数是列表集合
+        function myCall(obj){
+            if(obj===null||obj===undefined){
+                obj=window;
+            }
+            if(typeof obj!=="object"&&typeof obj!=="function"){
+                obj=Object(obj);
+            }
+            let f=null;
+            let arg=Array.from(arguments).slice(1);
+            obj[f]=this;
+            eval("obj[f]("+arg.toString()+")");
+            delete obj[f];
+        }
+
+
+        
+    </script>
+</body>
+</html>

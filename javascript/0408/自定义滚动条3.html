@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #huacao {
+            position: fixed;
+            height: 100%;
+            width: 20px;
+            top: 0;
+            right: 0;
+            background-color: cadetblue;
+        }
+
+        #huakuai {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            right: 0;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con">
+
+    </div>
+    <div id="huacao">
+        <div id="huakuai">
+
+        </div>
+    </div>
+    <script>
+        //自动生成内容
+        var oCon = document.getElementById("con");
+        for (var i = 0; i < 500; i++) {
+            oCon.innerHTML += i + "<br/>";
+        }
+        //自动生成滚动条高度
+        var oHuacao = document.getElementById("huacao");
+        var oHuakuai = document.getElementById("huakuai");
+        var huakuaiHeight = document.documentElement.clientHeight / oCon.clientHeight * oHuacao.clientHeight;
+        oHuakuai.style.height = huakuaiHeight + "px";
+        //设置滚动事件
+        oHuakuai.onmousedown = function (e) {
+            //清掉鼠标移动到外面带来的其他影响
+            e.preventDefault();
+            //设置鼠标移动事件
+            //获取到鼠标距离滑块自身上方的距离：e.offsetY;要先获取，因为offsetY是以当前事件的目标对象左上顶角为原点,定位Y轴坐标，定位之后它的原点还是不
+            var mouseToHuakuai=e.offsetY;
+            document.onmousemove = function (e) {
+                //清掉鼠标移动到外面带来的其他影响
+                e.preventDefault();
+                //鼠标移动的时候要获取到鼠标到窗口的最上方的距离：e.clientY;
+                var huakuaiPlace = e.clientY - mouseToHuakuai;
+                //判断临界值
+                if(huakuaiPlace<=0){
+                    huakuaiPlace=0;
+                }else if(huakuaiPlace>=oHuacao.clientHeight-oHuakuai.offsetHeight){
+                    huakuaiPlace=oHuacao.clientHeight-oHuakuai.offsetHeight;
+                }
+                oHuakuai.style.top = huakuaiPlace + "px";
+
+                //设置滑块滚动的时候内容也跟着一起滚动
+                //思想：内容往上走的距离/自身内容可以滑动的总高度=滑块走的距离/滑块可以滑动的总高度
+                var conMoveAll=oCon.clientHeight-document.documentElement.clientHeight;
+                var huakuaiMoveAll=oHuacao.clientHeight-oHuakuai.offsetHeight;
+                var conMove=huakuaiPlace/huakuaiMoveAll*conMoveAll;
+                oCon.style.marginTop=-conMove+"px";
+            }
+            document.onmouseup=function(){
+                //当鼠标抬起的时候清掉移动的事件
+                document.onmousemove=null;
+                //因为每次按下都会生成一个抬起事件，所以每次都要把当次的清掉
+                document.onmouseup=null;
+            }
+        }
+    </script>
+</body>
+
+</html>

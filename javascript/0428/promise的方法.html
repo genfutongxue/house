@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const promise=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                return Promise.resolve();
+            },1000)
+        })
+        console.log(promise);
+        //注意：未定义的情况下不会执行finally,只有定义了才会执行，不管成功了还失败都会执行
+        promise.finally(()=>{
+            console.log("finally")
+        })
+
+
+
+
+        let allSettled=Promise.allSettled([Promise.reject(),Promise.resolve(),Promise.reject()]);
+        console.log(typeof allSettled);
+        console.log(allSettled);
+    </script>
+</body>
+</html>

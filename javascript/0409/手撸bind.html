@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //bind:改变this指向，不会指向函数，会返回已经改变了this指向的函数
+        function fn(a, b, c) {
+            console.log(this);
+            console.log(a + b + c);
+        }
+        var obj1 = {
+            name: "wangshushu",
+            add: "shenzhen"
+        }
+        Function.prototype.myBind = function (obj) {
+            if (typeof obj === null || typeof obj === undefined) {
+                obj = window;
+            }
+            if (typeof obj !== "object" || typeof obj !== "function") {
+                obj = Object(obj);
+            }
+            var a = null;
+            obj.a = this;
+            //this()就相当于obj.a(),所以this(里面有this的话)，那么就是obj.a(里面的this)，所有里面的this指向了函数的调用者obj
+            var arr = Array.from(arguments).slice(1);
+            return function () {
+                obj.a.apply(obj, arr);
+            }
+        }
+        //a.myBind(obj1)=>obj1.a
+        var qq = fn.myBind(obj1, 8, 6, 7);
+        qq();
+
+    </script>
+</body>
+
+</html>

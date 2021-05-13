@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* function Fn() {
+            this.test1 = function () {
+                console.log('test1()')
+            }
+        }
+        Fn.prototype.test2 = function () {
+            console.log('test2()')
+        }
+        var fn = new Fn()
+
+        fn.test1()//test1()
+        fn.test2()//test2()
+        console.log(fn.toString())//[object Object]
+        fn.test3()//baocuo */
+
+
+
+        /* function Foo() { }
+        var f1 = new Foo();
+        console.log(f1 instanceof Foo);//true
+        console.log(f1 instanceof Object);//true?
+
+        //案例2
+        console.log(Object instanceof Function)//true?
+        console.log(Object instanceof Object)//true
+        console.log(Function instanceof Object)//true
+        console.log(Function instanceof Function)//true
+        console.log(Object instanceof Foo);//false
+
+        console.log(Function.prototype.__proto__ === Object.prototype)//true
+        console.log(Function.prototype, {})//一个对象 */
+
+
+
+        /* var A = function () {
+        }
+        A.prototype.n = 1
+        var b = new A()
+        A.prototype = {
+            n: 2,
+            m: 3
+        }
+        var c = new A()
+        console.log(b.n, b.m, c.n, c.m)//1,undefined,2,3
+         */
+
+
+
+        /* var F = function () { };
+        Object.prototype.a = function () {
+            console.log('a()')
+        };
+        Function.prototype.b = function () {
+            console.log('b()')
+        };
+        var f = new F();
+        f.a()
+        f.b()//报错
+        F.a()
+        F.b()
+ */
+
+
+
+        /* var x = 10;
+        function fn() {
+            console.log(x);
+        }
+        function show(f) {
+            var x = 20;
+            f();
+        }
+        show(fn);
+ */
+
+
+
+        /* var fn = function () {
+            console.log(fn)
+        }
+        fn() */
+
+
+        /* function f1(num) {
+
+            function f2() {
+
+                console.log(num);
+
+            }
+
+            return f2;
+
+        }
+
+        var fa = f1(10);
+
+        var fb = f1(20);
+
+        var fc = f1(30);
+
+        fa();
+
+        fb();
+
+        fc(); */
+
+
+
+        /* console.log(1)
+
+
+
+        setTimeout(function () {
+
+            console.log(2)
+
+        })
+
+
+
+        setTimeout(function () {
+
+            console.log(3)
+
+        }, 100)
+
+
+
+        setTimeout(function () {
+
+            console.log(4)
+
+        }, 0)
+
+
+
+        console.log(5) */
+
+
+        //属性名是字符串！！！！！！！！！！！
+        var a = {},
+
+            b = { key: 'b' },
+
+            c = { key: 'c' };
+
+
+
+        a[b] = 123;
+
+        a[c] = 456
+        console.log(a);
+        console.log(a[b]);
+        console.log(a[c]);
+        console.log(a[a]);
+    </script>
+</body>
+
+</html>

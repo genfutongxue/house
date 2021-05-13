@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            background-color: lightgray;
+        }
+
+        .outer {
+            position: relative;
+            width: 329px;
+            height: 360px;
+            margin: 50px auto 0;
+        }
+
+        .outer>.inner {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .outer>.inner>img {
+            width: 329px;
+            height: 360px;
+        }
+
+        .outer>.inner>.left,
+        .outer>.inner>.right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 38px;
+            border-radius: 50%;
+            color: #fff;
+            background-color: lightcoral;
+        }
+
+        .outer>.inner>.left {
+            left: 0;
+        }
+
+        .outer>.inner>.right {
+            right: 0;
+        }
+
+        .outer>.inner>.round {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .outer>.inner>.round>li {
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin: 2px;
+            border-radius: 50%;
+            background-color: linen;
+        }
+
+        .outer>.inner>.round>li.mark {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <img src="./images/floor-1-b01.png">
+            <img src="./images/floor-1-b02.png">
+            <img src="./images/floor-1-b03.png">
+            <div class="left">
+                &lt;
+            </div>
+            <div class="right">
+                &gt;
+            </div>
+            <ul class="round">
+                <li class="mark"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oOuter = document.getElementsByClassName("outer");
+        var oInner = document.getElementsByClassName("inner");
+        var oImgs = document.querySelectorAll(".outer>.inner>img");
+        var oLeft = document.getElementsByClassName("left");
+        var oRight = document.getElementsByClassName("right");
+        var oRound = document.getElementsByClassName("round");
+        var i = 0;
+        setInterval(function () {
+            clearInterval(inTime);
+            i++;
+            if (i >= oImgs.length) {
+                i = 0;
+            }
+            var startLocation = oInner[0].scrollLeft;
+            var endLocation = i * oImgs[0].offsetWidth;
+            var startStep = 0;
+            var endStep = 30;
+            var everyStep = (endLocation - startLocation) / endStep;
+            var inTime = setInterval(function () {
+                startLocation += everyStep;
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(inTime);
+                }
+                oInner[0].scrollLeft = startLocation;
+            }, 50);
+            /* startLocation=i*oImgs[0].offsetWidth; */
+            /* oInner[0].scrollLeft=startLocation; */
+        }, 2000);
+
+
+    </script>
+</body>
+
+</html>

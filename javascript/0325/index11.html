@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //用while() 循环来计算1 + 2 + 3...+98 + 99 + 100 的值。
+        /* var a=0;
+        var b=0;
+        while(a<=100){
+            b+=a;
+            a++;
+        }
+        alert(b); */
+
+
+        /* var a=0,b=0;
+        do {
+            b+=a;
+            a++;
+        }
+        while(a<=100);
+        alert(b); */
+
+
+        //将1-100之间  3的倍数找出来 并打印
+        //a%3===0   a+=3
+        /* var a=3;
+        while(a<=100){
+            console.log(a);
+            a+=3;
+        } */
+
+        /* var a = 0;
+        while (a<=100) {
+            a++;
+            if(a % 3 === 0){
+                console.log(a);
+            }
+        } */
+
+
+        /* var a=1;
+        do{
+            if(a%3===0){
+                console.log(a);
+            }
+            a++;
+        }while(a<=100) */
+
+
+        //用户输入一个年利率（1.2）和一个总额(去年的利息和本钱 是下一年的本金) ，翻倍需要几年
+        var benjin = 10000, lilv = 1.2, nian = 0;
+        var mubiao = 2 * benjin;
+        while (benjin <= mubiao) {
+            nian++;
+            benjin *= lilv;
+        }
+        alert(nian);
+
+
+    </script>
+</body>
+
+</html>

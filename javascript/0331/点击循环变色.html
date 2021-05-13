@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        var oDiv = document.getElementById("div");
+        /* var a = true;
+        oDiv.onclick = function () {
+            if (a) {
+                document.body.style.background = "green";
+            } else {
+                document.body.style.background = "yellowgreen";
+            }
+            a = !a;
+        } */
+
+
+        var a = 0;
+        oDiv.onclick = function () {
+            a++;
+            switch (a % 3) {
+                case 1:
+                    document.body.style.background = "green";
+                    break;
+                case 2:
+                    document.body.style.background = "pink";
+                    break;
+                case 0:
+                    document.body.style.background = "yellowgreen";
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

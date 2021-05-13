@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //扩展运算符：...  合并数组字符串
+        let arr="asda";
+        let arr1="lkpmp";
+        //要合并字符串，先把字符串展开到一个数组里
+        let arr2=[...arr,...arr1];
+        //再把数组转成字符串
+        let re=arr2.join("");
+        console.log(re);
+
+
+        let arr3=[1,2,3,4,5];
+        let arr4=[6,7,8,9,0];
+        let arr5=[...arr3,...arr4];
+        console.log(arr5);
+
+
+        let obj={name:"asd"};
+        let obj1={...obj};
+        console.log(obj1);
+    </script>
+</body>
+</html>

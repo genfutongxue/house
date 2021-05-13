@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 手写instanceof */
+        /* A instanceof B :检测B的原型对象是否在A的原型链上*/
+        function MyInstanceof(A, B) {
+            let oA = A.__proto__;
+            while (oA) {
+                if (oA === B.prototype) {
+                    return true;
+                }
+                oA = oA.__proto__;
+            }
+            return false;
+        }
+        let x = new Object();
+        let y = function () { };
+        console.log(x instanceof y);
+        console.log(MyInstanceof(x, y));
+    </script>
+</body>
+
+</html>

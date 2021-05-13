@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //短路原理
+            var a=2,b=3;
+            (a>b)&&(a=6)
+            console.log(a);//2
+            var a=2,b=3;
+            (a<b)&&(a=6);
+            console.log(a);//6
+            /* 
+            &&逻辑与：前面对了才会去到后面，前面都没对就不需要看后面了，都是不对了
+            */
+           var a=2,b=3;
+           (a>b)||(a=9);
+           console.log(a)//9
+           var a=2,b=3;
+           (a<b)||(a=9);
+           console.log(a);//2
+           /* ||逻辑或：前面错了才会去到后面，前面对了就不需要看后面了 ，有一个对了就可以*/
+        </script>
+    </body>
+</html>

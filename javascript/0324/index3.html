@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        outer:
+        for (var i = 0; i < 10; i++) {
+            //debugger;调试代码
+            inner:
+            for (var j = 0; j < 7; j++) {
+                break inner;//默认
+            }
+        }
+        console.log(i,j);
+        /* outer:
+            for (var i = 0; i < 3; i++) {
+                inner: for (var j = 0; j < 3; i++) {
+                    //退出
+                    break inner;
+                }
+            }
+            console.log(i,j); */
+    </script>
+</body>
+
+</html>

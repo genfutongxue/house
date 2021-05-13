@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //增加元素的方法：
+            var arr=[231,34,587,61,34789,1234,576]
+            //1.push:只能在数组的最后面的增加值,返回的是数组的长度
+            arr.push(45);
+            console.log(arr);
+            //2.unshift:只能在数组的最前面增加值，返回的是数组的长度
+            arr.unshift(88);
+            console.log(arr);
+            //3.通过下标，局限很大，基本用不上
+            arr[10]=5;
+            console.log(arr);
+            //4.splice:可删可减可换,如果增加一个数组，那么它不会展开，而是以一个数组占据这个位置，返回的是它删掉的元素组成的一个数组。如果没有删除元素，就是一个空数组。
+            arr.splice(4,0,25,45);
+            console.log(arr);
+            arr.splice(4,0,[12,45,56]);
+            console.log(arr);
+            //5.concat:在数组的末尾进行合并数组，会把要增加的数组打散成每个元素再加进去,并且返回的值生成新的数组，并不影响原来的数组。
+            var arr1=arr.concat([36,36,36]);
+            console.log(arr1);
+            var arr2=arr.concat([12,[45,78]]);//只能展开一个维度，要是里面嵌套了多重数组，那么只能展开一次，就是把最外层的展开。
+            console.log(arr2);
+        </script>
+    </body>
+</html>

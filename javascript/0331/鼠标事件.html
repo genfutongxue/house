@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .car {
+            width: 500px;
+            height: 500px;
+            border: 1px solid green;
+        }
+
+        .benz,
+        .audi {
+            height: 100px;
+            margin: 100px 0;
+        }
+
+        .car>.benz {
+            background-color: burlywood;
+        }
+
+        .car>.audi {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="car" class="car">
+        <div id="benz" class="benz"></div>
+        <div id="audi" class="audi"></div>
+    </div>
+    <script>
+        /* 鼠标事件:
+                mousedown:鼠标按下
+                mouseup:鼠标抬起
+                mousemove:鼠标在元素上移动
+                mouseover:鼠标移入
+                mouseenter：鼠标移入(没有冒泡)
+                mouseout：鼠标移出
+                mouseleave:鼠标移出(没有冒泡) */
+        /* var oCar = document.getElementsByClassName("car");
+        var oBenz = document.getElementsByClassName("benz");
+        var oAudi = document.getElementsByClassName("audi");
+        oCar.onmousedown = function () {
+            console.log("opq");
+        }
+        oCar.onmouseup = function () {
+            console.log("rst");
+        } */
+        var oCar = document.getElementById("car");
+        var oBenz = document.getElementById("benz");
+        var oAudi = document.getElementById("audi");
+        /* oCar.onmousedown = function () {
+            console.log("asd");
+        } */
+        /* oCar.onmouseup = function () {
+            console.log("hjd");
+        } */
+        /* oCar.onmousemove=function(){
+            console.log("llko");
+        } */
+        /* oCar.onmouseover=function(){
+            console.log("789");
+        } */
+        /* oCar.onmouseenter=function(){
+            console.log("wqjk");
+        } */
+        /* oCar.onmouseout=function(){
+            console.log("ppp");
+        } */
+        oCar.onmouseleave=function(){
+            console.log("qwe");
+        }
+    </script>
+</body>
+
+</html>

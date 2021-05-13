@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* let obj = {
+            name: "xiaowang",
+            age: 19,
+            add: function () { console.log(this) }
+        }
+        obj.add();
+        let { name, age, add } = obj;
+        add(); */
+
+        //值互换
+        /* let [a,b]=[1,2];
+        let [b,a]=[a,b]; */
+
+        /* let a=1,b=2;
+        a=a+b;
+        b=a-b;
+        a=a-b;
+        console.log(a,b); */
+
+        /* if(true){
+            function fn(){
+                console.log(1);
+            }
+        }
+        fn(); */
+
+        /* if(true){
+            let fn=function(){
+                console.log(1);
+            }
+        }
+        fn() */;
+
+
+        /* let [hoo=1,foo=hoo]=[];
+        console.log(foo,hoo);
+        let [hoo=foo,foo=1]=[];
+        console.log(foo,hoo);//报错了 */
+
+
+        /* let[a,b,...c]=[1,2,3,4,5,6,7,8,9,0];
+        console.log(a,b,c); */
+
+
+        /* let {hoo,foo}={foo:"hello",hoo:"world"};
+        console.log(foo,hoo); */
+
+
+        /* let arr=[1,2,3,4,5,6];
+        let {[0]:first,[arr.length-1]:last}=arr
+        console.log(first,last);
+        console.log(arr[0],arr[arr.length-1]); */
+
+
+        /* let {log}=console;
+        log(1);
+        let{log:hello}=console;
+        hello(999); */
+
+
+        /* function fn(){
+            return [1,2,3,4];
+        }
+        let [a,b,c,d]=fn();
+        console.log(a,b,c,d); */
+
+
+        /* function fn(){
+            return {x:1,y:2}
+        }
+        let {y,x}=fn();
+        console.log(x,y); */
+
+
+        /* let data = {
+            message: {
+                title: "今天天气真的很好",
+                todo: "打台球",
+                time: "时间2020.3.25",
+                isLike: false
+            }
+        }
+        let str=
+            `<div class="box">
+            <h2>${data.message.title}</h2>
+            <p>${data.message.todo}</p>
+            <p>${data.message.time}</p>
+            <p>${data.message.isLike?"钟意":"不钟意"}</p>
+            </div>`;
+        document.body.innerHTML=str; */
+
+
+        if(1){
+            let a=1;
+            var b=2;
+        }
+        console.log(b);
+    </script>
+</body>
+
+</html>

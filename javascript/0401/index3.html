@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .a{
+                width:100px;
+                height:100px;
+                padding:20px;
+                border:20px solid #000;
+                /* display:none; */
+                /*当元素被隐藏时获取不到宽度和高度。*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a"></div>
+        <img src="./01.png">
+        <script>
+            //offsetWidth和offsetHeight(含边框的)
+            //offsetWidth是获取元素在html中所占的总宽度
+            var oA=document.getElementsByClassName("a");
+            var s=oA[0].offsetWidth;
+            console.log(s,h);
+            //offsetHeight是获取元素在html中所占的总高度
+            var h=oA[0].offsetHeight;
+            console.log(h);
+            var oImage=document.querySelector("img");
+            var q=oImage.offsetWidth;
+            console.log(q);//获取图片的宽度，当图片没有加载完成时获取不到。
+
+
+            //clientWidth和clientHeight(不含边框的)
+            console.log(oA[0].clientWidth);
+            console.log(oA[0].clientHeight);
+            console.log(oImage.clientWidth);//图片没有加载完成，获取不到宽度和高度
+            console.log(oImage.clientHeight);
+        </script>
+    </body>
+</html>

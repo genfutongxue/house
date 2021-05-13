@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //函数有两个，一种是做事就行，另一种是做完事还要返回值
+        //1.做事就行
+        function fn() {
+            alert("弹出东西就可以");
+        }
+        //2.不但要做事，还要返回值
+        var a=null;
+        function fn1(h, k) {
+            a = h + k;
+            //a的值是计算了，但是还要返回，所以用return
+            return a;
+        }
+        fn1(9,9);
+        console.log(a);//18
+        var x=fn1(8,8);//如果没有return也可以用一个变量来接受函数的值
+        console.log(x);
+        ////////////////////////
+        //return的作用：1.给函数返回值 2.结束这个函数，到了return的地方就直接退出这个函数
+        var x=null;
+        var y=null;
+        var i=null;
+        function fn2(i){
+            if(i<10){
+                y=20*i;
+            }else{
+                y=80*i;
+            }
+            return y;
+            console.log(y);//因为return,所以这个不起作用。
+        }
+        fn2(5);
+        console.log(y);
+        fn2(10);
+        console.log(y);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        /*手写防抖：代码在一段时间内只执行一次，当超过这个时间才会执行，在没有超过这么时间又发生了事件就继续重新计算时间*/
+        //核心事件函数：
+        function hexin(e) {
+            console.log(3);
+            console.log(this);
+            console.log(e);
+        }
+        //防抖函数：
+        function debounce(fn, time) {
+            //在这里设置延迟计时器名字，这样每次触发都是同一个计时器了
+            var timer = null;
+            //结果是要返回一个函数，所以就return
+            return function () {
+                var _this = this;
+                //每次触发都要重新计算，所以要清掉原来的计时器
+                clearTimeout(timer);
+                //要把event传到计时器里面去,arguments的第一个实参就是event
+                var arg = arguments[0];
+                //设置延迟计时器，让时间触发之后延迟执行核心代码
+                timer = setTimeout(function () {
+                    //改变核心函数的this指向,但是计时器里的this永远指向window，所以要在外面用一个变量保存到this，然后再在里面用
+                    fn.call(_this, arg);
+                }, time);
+            }
+        }
+
+
+        //使用：
+        var oIpt = document.getElementById("ipt");
+        oIpt.oninput = debounce(hexin, 1000);
+    </script>
+</body>
+
+</html>

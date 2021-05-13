@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡切换页面结构</title>
+    
+    <style>
+        #outer{
+            width: 606px;
+            margin: 0 auto;
+            border: 1px solid #2ba5eb;
+        }
+        #title{
+            overflow: hidden;
+        }
+        #title>h3{
+            width: 200px;
+            border: 1px solid #ccc;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #333;
+            float: left;
+        }
+        #con{
+
+        }
+        #con>li{
+            width: 606px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+            font-weight: bold;
+            display: none;
+        }
+        #title>.active{
+            background-color: red;
+            color: #fff;
+        }
+        #con>.show{
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="outer">
+        <div id="title">
+            <h3 class="active">标题一</h3>
+            <h3>标题二</h3>
+            <h3>标题三</h3>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+
+    <script>
+        //tab切换
+        //获取元素
+        var oTitle=document.getElementById("title");
+        var oH3=document.querySelectorAll("#title>h3");
+        var oLis=document.querySelectorAll("#con>li");
+        //先给所有的h3和li都加上dataset：num属性值分别为他们对应的下标
+        oH3.forEach(function(item,index){
+            item.dataset.num=index;
+        });
+        oLis.forEach(function(item,index){
+            item.dataset.num=index;
+        });
+        //绑定点击事件
+        oTitle.onclick=function(e){
+            //判定点击的是h3
+            if(e.target.nodeName.toLowerCase()==="h3"){
+                //先清空所有的h3的class值
+                oH3.forEach(function(item){
+                    item.classList.remove("active");
+                });
+                //先清空所有的li的class值
+                oLis.forEach(function(item){
+                    item.classList.remove("show");
+                });
+                //把当前点击的目标元素加上class值为active
+                e.target.classList.add("active");
+                //把当前点击的目标元素对应的内容区的元素加上class值为show
+                oLis[+e.target.dataset.num].classList.add("show");
+            }
+        }
+    </script>
+</body>
+</html>

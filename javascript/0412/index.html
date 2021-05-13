@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function Fn(){
+            return this;
+        }
+        console.log(Fn());
+        var a=new Fn();//因为new会改变构造函数的this指向，所以return返回回来的就是实例化对象而不是window
+        console.log(a);
+    </script>
+</body>
+</html>

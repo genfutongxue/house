@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #box {
+            width:300px;
+            display: flex;
+            border: 1px solid green;
+        }
+
+        #left,#right {
+            width: 100px;
+            height: 200px;
+            list-style-type: none;
+            padding:0;
+            margin:0;
+            background-color:blanchedalmond;
+        }
+        #_left,#_right{
+            width:100px;
+            border:1px solid #000;
+            margin-bottom:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="left">
+            <li>好男人就是我</li>
+            <li>好男人就是我</li>
+            <li>好男人就是我</li>
+            <li>好男人就是我</li>
+            <li>好男人就是我</li>
+        </ul>
+        <div>
+            <div id="_left">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</div>
+            <div id="_right">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+        </div>
+        <ul id="right">
+            <li>我就是好男人</li>
+            <li>我就是好男人</li>
+            <li>我就是好男人</li>
+            <li>我就是好男人</li>
+            <li>我就是好男人</li>
+        </ul>
+    </div>
+    <script>
+        //获取元素
+        var oLeft=document.getElementById("left");
+        var oLisL=document.querySelectorAll("#left>li");
+        var oRight=document.getElementById("right");
+        var oLisR=document.querySelectorAll("#right>li");
+        var o_Left=document.getElementById("_left");
+        var o_Right=document.getElementById("_right");
+        oLeft.onclick=function(e){
+            if(e.target.nodeName==="LI"){
+                e.target.dataset.mark="zhi";
+                e.target.style.background="#f1f1f1";
+            }
+        }
+        oRight.onclick=function(e){
+            if(e.target.nodeName==="LI"){
+                e.target.dataset.mark="zhi";
+                e.target.style.background="#f1f1f1";
+            }
+        }
+        o_Left.onclick=function(){
+            oLisL=document.querySelectorAll("#left>li");
+            oLisL.forEach(function(item){
+                if(item.dataset.mark){
+                    item.style.background="transparent";
+                    oRight.appendChild(item);
+                    delete item.dataset.mark;
+                }
+            });
+        }
+        o_Right.onclick=function(){
+            oLisR=document.querySelectorAll("#right>li");
+            oLisR.forEach(function(item){
+                if(item.dataset.mark){
+                    item.style.background="transparent";
+                    oLeft.appendChild(item);
+                    delete item.dataset.mark;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

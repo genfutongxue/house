@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字符串去空格的方法：
+        let str="   asbkjnd    ";
+        console.log(str.trim());
+        console.log(str.trimStart());
+        console.log(str.trimEnd());
+
+        //判断字符串是否包含的方法
+        console.log(str.startsWith(" "));
+        console.log(str.endsWith(" "));
+        console.log(str.includes("bkj"));
+
+        //重复当前字符串的方法：
+        let str1="hello";
+        let str2=str1.repeat(2);
+        console.log(str2)
+
+        //补充字符串：
+        let str3="World";
+        let str4=str3.padEnd(9," Cup");
+        console.log(str4);
+        let str5=str4.padStart(13,"The ");
+        console.log(str5);
+    </script>
+</body>
+</html>

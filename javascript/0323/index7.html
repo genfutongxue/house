@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //等于判断,判断出来的一定是Boolean值（true  false）
+        //==:值相等就可以
+        //===:值要相等，类型也要相等
+        var a = "5", b = 5;
+        console.log(a==b);//true
+        console.log(a===b);//false
+        var a=0;
+        console.log(a==true);//false
+        console.log(a==false);//true
+        console.log(NaN==undefined);//false,NaN和谁比都是false
+        console.log(a==[]);//true
+        console.log([]=={});
+        //null的对比
+        //null除了和（null、undefined）比较是相等的，和其他比较都是错的。
+        console.log(null==0);//false
+        console.log(null==undefined);//true
+        console.log(null==null);//true
+        console.log(null=="");//false
+        //对象的比较：一定不相等
+        console.log({}=={});
+        //!=和!==的区别；
+        //!=不管类型。只管值
+        console.log(1!="1");
+        //!==类型和值都要比较
+        console.log(1!=="1")
+    </script>
+</body>
+
+</html>

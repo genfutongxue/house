@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //every方法：判断数组中是否所有元素都符合条件
+            //返回布尔值
+            var arr=[
+                {name:"wang",
+                age:45,
+                add:"shenzhen"},
+                {name:"lige",
+                age:20,
+                add:"guang"},
+                {name:"faker",
+                age:16,
+                add:"krea"}
+            ]
+            var a=arr.every(function(item,index,array){
+                return item.age>18;
+            });
+            console.log(a);
+
+            //some方法：判断数组中是否有元素符合条件,只要有一个符合条件，就返回true
+            //返回布尔值
+            var b=arr.some(function (item,index,array){
+                return item.age<15;
+            });
+            console.log(b);
+        </script>
+    </body>
+</html>

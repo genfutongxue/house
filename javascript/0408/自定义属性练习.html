@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <ol>
+            <li>你是谁</li>
+            <li>你是谁</li>
+            <li>你是谁</li>
+            <li>你是谁</li>
+            <li>你是谁</li>
+            <li>你是谁</li>
+        </ol>
+        <button id="btn">确定</button>
+        <script>
+            var oLis=document.querySelectorAll("ol>li");
+            var oBtn=document.getElementById("btn");
+            oLis.forEach(function(item){
+                item.onclick=function(){
+                    /* item.setAttribute("mark","change"); */
+                    item.dataset.mark="change";
+                }
+                    
+            });
+            oBtn.onclick=function(){
+                oLis.forEach(function(item){
+                    if(item.dataset.mark){
+                        item.style.background="green";
+                        item.style.color="#fff";
+                        delete item.dataset.mark;
+                    }else{
+                        item.style.background="#FFF";
+                        item.style.color="#000";
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <input type="text" id="ipt">
+        <button id="btn">检测</button>
+        <script>
+            /* function he(name){
+                alert("小明的年龄是"+name);
+            }
+            var a=he(15);//undefined
+            console.log(a); */
+
+
+
+            //点击检测的时候，判断是不是全部是数字
+            var oIpt=document.getElementById("ipt");
+            var oBtn=document.getElementById("btn");
+            oBtn.onclick=function(){
+                if(isNaN(oIpt.value)){
+                    alert("cuo");
+                }else{
+                    alert("dui");
+                }
+            }
+
+
+        </script>
+    </body>
+</html>

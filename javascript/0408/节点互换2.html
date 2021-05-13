@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #outer{
+                width:600px;
+                height:400px;
+                border:1px solid green;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            }
+            #left,#right{
+                width:200px;
+                height:100%;
+                text-align:center;
+                background-color:green;
+                color:#fff;
+                font-size:20px;
+            }
+            #controls{
+                text-align:center;
+                font-size:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <ul id="left">
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+            </ul>
+            <div id="controls">
+                <button id="btn_left">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</button>
+                <button id="btn_right">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</button>
+            </div>
+            <ul id="right">
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+                <li>are you ok ?</li>
+            </ul>
+        </div>
+        <script>
+            var oLeft=document.getElementById("left");
+            var oRight=document.getElementById("right");
+            var oBtn_left=document.getElementById("btn_left");
+            var oBtn_right=document.getElementById("btn_right");
+            var oLeft_lis=document.querySelectorAll("#left>li");
+            var oRight_lis=document.querySelectorAll("#right>li");
+            
+            //冒泡思想：给父元素绑定点击事件(点击了li也就是点击了ul,然后再精准判断点击的是不是li)
+            oLeft.onclick=function(e){
+                if(e.target.nodeName==="LI"){
+                    e.target.dataset.mark="yes";
+                    e.target.style.background="blue";
+                }
+            }
+            oRight.onclick=function(e){
+                if(e.target.nodeName==="LI"){
+                    e.target.dataset.mark="yes";
+                    e.target.style.background="blue";
+                }
+            }
+            //按钮点击交换事件
+            oBtn_left.onclick=function(){
+                oLeft_lis=document.querySelectorAll("#left>li");
+                oLeft_lis.forEach(function(item){
+                    if(item.dataset.mark){
+                        oRight.appendChild(item);
+                        delete item.dataset.mark;
+                        item.style.background="transparent";
+                    }
+                });
+            }
+            oBtn_right.onclick=function(){
+                oRight_lis=document.querySelectorAll("#right>li");
+                oRight_lis.forEach(function(item){
+                    if(item.dataset.mark){
+                        oLeft.appendChild(item);
+                        delete item.dataset.mark;
+                        item.style.background="transparent";
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                list-style-type:none;
+                font-size:24px;
+            }
+            .tab{
+                width:600px;
+                border:1px solid red;
+            }
+            .tab>#title{
+                display:flex;
+                width:100%;
+                background-color:blanchedalmond;
+            }
+            .tab>#title>h2{
+                width:200px;
+                text-align:center;
+                cursor:pointer;
+            }
+            .tab>#con{
+                width:600px;
+                height:300px;
+            }
+            .tab>#con li{
+                width:600px;
+                height:300px;
+                display:none;
+            }
+            .tab #title .hello{
+                background-color:red;
+                color:white;
+            }
+            .tab #con .world{
+                display:flex;
+                justify-content:center;
+                line-height:300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="tab">
+            <div id="title">
+                <h2>标题一</h2>
+                <h2 class="hello">标题二</h2>
+                <h2>标题三</h2>
+            </div>
+            <div id="con">
+                <ol>
+                    <li>内容一</li>
+                    <li class="world">内容二</li>
+                    <li>内容三</li>
+                </ol>
+            </div>
+        </div>
+        <script>
+            //获取元素
+            var oTitle=document.getElementById("title");
+            var oHellos=document.getElementsByTagName("h2");
+            var oCon=document.getElementById("con");
+            var oWorlds=document.getElementsByTagName("li");
+            //第二步：绑定点击事件
+            oHellos[0].onclick=function(){
+                //通过下标来设置他们的属性，classList属性用来控制当前元素的类，可以修改，也可以增加
+                oHellos[0].classList.add("hello");
+                oHellos[1].classList.remove("hello");
+                oHellos[2].classList.remove("hello");
+
+                oWorlds[0].classList.add("world");
+                oWorlds[1].classList.remove("world");
+                oWorlds[2].classList.remove("world");
+
+            }
+            oHellos[1].onclick=function(){
+                
+                oHellos[1].classList.add("hello");
+                oHellos[0].classList.remove("hello");
+                oHellos[2].classList.remove("hello");
+
+                oWorlds[1].classList.add("world");
+                oWorlds[0].classList.remove("world");
+                oWorlds[2].classList.remove("world");
+
+            }
+            oHellos[2].onclick=function(){
+                
+                oHellos[2].classList.add("hello");
+                oHellos[1].classList.remove("hello");
+                oHellos[0].classList.remove("hello");
+
+                oWorlds[2].classList.add("world");
+                oWorlds[1].classList.remove("world");
+                oWorlds[0].classList.remove("world");
+
+            }
+        </script>
+    </body>
+</html>

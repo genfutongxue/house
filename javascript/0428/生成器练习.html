@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //generator:生成器
+        //形式：
+        function* fn(){
+            yield "状态一";
+            yield "状态二";
+            yield "状态三";
+            yield "状态四";
+            return "aaa";
+        }
+        let re=fn();
+        console.log(re);
+        //函数并不会执行
+
+        //此时函数执行第一次的yield
+        let re1=re.next();
+        console.log(re1);//{value: "状态一", done: false}
+        //再次调用函数.next()方法就执行下一次的yield
+        console.log(re.next());//{value: "状态二", done: false}
+        console.log(re.next());//{value: "状态三", done: false}
+        console.log(re.next());//{value: "状态四", done: false}
+        //调用完了之后再调用就没有了，就显示下面的东西
+        console.log(re.next());//{value: "aaa", done: true}
+    </script>
+</body>
+</html>

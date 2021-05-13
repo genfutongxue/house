@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="car"></div>
+        <input type="checkbox">
+        <script src="./jquery-1.12.4.js"></script>
+        <script>
+            console.log($(".car").attr("class"));//返回该属性的值
+            console.log($(".car").attr("id","benz"));//设置属性，返回该元素jQuery对象
+            console.log($(".car").attr({
+                id:"audi",
+                class:"benz",
+            }));//一般用一个对象去设置，以键值对的形式设置
+            console.log($(".car"));//修改了就获取不到了
+            $(".benz").removeAttr("id");
+            console.log($(".benz").removeAttr());//不传参数就不做任何修改
+            console.log($("input[type='checkbox']").prop("checked"));
+        </script>
+    </body>
+</html>

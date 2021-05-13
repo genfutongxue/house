@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /*
+        new:1.返回了一个实例化对象
+            2.让这个对象的隐式原型链指向了构造函数的显示原型对象
+            3.让构造函数的this指向了返回的实例化对象
+            4.会对构造函数的返回值做一个判断，如果为基本类型则返回实例化对象，如果为对象类型则返回构造函数的返回值
+        */
+        //先写一个构造函数：
+        function Fn() {
+
+        }
+        //写一个new函数模拟new的过程
+        function New(fn) {
+            var obj = {};
+            obj.__proto__ = fn.prototype;
+            var agr = Array.from(arguments).slice(1);
+            var re = fn.apply(obj, agr);
+            if (typeof re === "object" && re !== null || typeof re === "function") {
+                return re;
+            }
+            return obj;
+        }
+        //调用函数
+        New(Fn);
+    </script>
+</body>
+
+</html>

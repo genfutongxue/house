@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .tab {
+            width: 600px;
+            border: 1px solid green;
+            margin: 100px auto;
+
+        }
+
+        .tab .tab-1 {
+            width: 100%;
+            display: flex;
+        }
+
+        .tab .tab-1 h2 {
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .tab .tab-1 h2.hello {
+            color: white;
+            background-color: blueviolet;
+        }
+
+        .tab .tab-2 {
+            width: 600px;
+            height: 400px;
+        }
+
+        .tab .tab-2 li {
+            width: 100%;
+            height: 100%;
+            line-height: 400px;
+            background-color: green;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+
+        .tab .tab-2 li.world {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab-1">
+            <h2>标题一</h2>
+            <h2>标题二</h2>
+            <h2 class="hello">标题三</h2>
+        </div>
+        <ol class="tab-2">
+            <li>内容一</li>
+            <li>内容二</li>
+            <li class="world">内容三</li>
+        </ol>
+    </div>
+    <script>
+        //获取元素
+        var oHellos = document.getElementsByTagName("h2");
+        var oWorlds = document.getElementsByTagName("li");
+        //做一个循环，让所有标签都轮一遍。
+        for (var i = 0; i < oHellos.length; i++) {
+            //给知道自己下标的标签做一个属性，后面用
+            oHellos[i].under = i;
+            //绑定事件
+            oHellos[i].onclick = function () {
+                for (var i = 0; i < oHellos.length; i++) {
+                    //先把全部h2和li的class清除
+                    oHellos[i].classList.remove("hello");
+                    oWorlds[i].classList.remove("world");
+                }
+                //全部清除完了之后就要给有需要的加上
+                this.classList.add("hello");
+                oWorlds[this.under].classList.add("world");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

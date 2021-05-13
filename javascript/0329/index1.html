@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //slice:截取数组，把截取的元素拼成一个数组返回，不影响原来的数组
+        var arr1 = [2, 2321, 111, 21, 12, 12, 23121, 21, 12, 12, 2131, 12, 21];
+        var haha = arr1.slice(4, 6);
+        console.log(haha, arr1);
+        var haha1 = arr1.slice(-3, -1);
+        console.log(haha1);
+        console.log(arr1.slice(1, 1));//为空，因为后面这位不截取
+
+        //splice:把原数组可删可增可换
+        var arr2 = [2, 2321, 111, 21, 12, 12, 23121, 21, 12, 12, 2131, 12, 21];
+        var haha2 = arr2.splice(-5, 5);
+        console.log(haha2);
+        console.log(arr2);
+
+
+            //总结：slice(a,b,c);splice(a,b,c).a都可以为负数，负数就是从后面往前数，slice中b一定要大于a，否则截取为空，splice中b<=0都会被认为是0
+    </script>
+</body>
+
+</html>

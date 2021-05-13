@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(){};
+        function b(){};
+        //让b拥有a方法和属性
+        function JiChen(){
+            a.prototype=new b();
+            a.__proto__
+        }
+    </script>
+</body>
+</html>

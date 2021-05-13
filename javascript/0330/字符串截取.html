@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            var str="jnOnDs126naf3da";
+            //截取字符串：
+            console.log(str.slice(1,10));//slice(a,b);a为起始位置，b为结束位置（不包含b）;
+            console.log(str.substr(1,10));//substr(a,b);a为起始位置，b为要截取的长度。
+            console.log(str.substring(1,10));//substring(a,b);a为起始位置，b为结束位置（不包含b）;
+            //大小写转换：
+            console.log(str.toUpperCase());//把全部字母转为大写
+            console.log(str.toLowerCase());//把全部字母转为小写
+            //字符串转数组:split方法
+            console.log(str.split(""));//["j", "n", "O", "n", "D", "s", "1", "2", "6", "n", "a", "f", "3", "d", "a"]
+            console.log(str.split("n"));//["j", "O", "Ds126", "af3da"]
+            console.log(str.split());//["jnOnDs126naf3da"]
+        </script>
+    </body>
+</html>

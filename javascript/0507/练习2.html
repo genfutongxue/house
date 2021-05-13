@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //求数组的和
+        const arr = [12, 34, 2, 5, 76];
+        let num = 0;
+        arr.forEach(function (item) {
+            num += item;
+        })
+        console.log(num);
+
+        //将数组的0去掉，其他值放入新数组中
+        const arr1 = [4, 0, 7, 9, 0, 0, 2, 6, 0, 3, 1, 0];
+        let arr2 = [];
+        arr1.forEach(function (item) {
+            if (item !== 0) {
+                arr2.push(item);
+            }
+        });
+
+
+        //写出一个javascript的函数，实现对一个数组去重的功能。
+        function quchong(arr1){
+            let arr2=[];
+            arr1.forEach(function(item){
+                if(arr2.indexOf(item)===-1){
+                    arr2.push(item);
+                }
+            });
+            return arr2;
+        }
+
+        function quchong1(arr1){
+            let obj={};
+            let arr2=[];
+            arr1.forEach(function(item){
+                if(obj[item]){
+                    obj[item]=true;
+                }else{
+                    obj[item]=true;
+                    arr2.push(item);
+                }
+            });
+            return arr2;
+        }
+    </script>
+</body>
+
+</html>

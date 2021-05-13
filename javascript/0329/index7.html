@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //slice的方法：截取数组
+            //格式：Array.slice(a,b);其中a为截取的起始位置(下标)，b为截取的终止位置（下标），注意并不会截取到b，而是截取到b的前面那个值
+            //返回值：返回的是截取到的元素组成的数组
+            //并不会影响原来的数组
+            var arr=[231,34,587,61,34789,1234,576]
+            var re=arr.slice(2,4);
+            console.log(re);
+            var re1=arr.slice(-5,5);//其中，两个下标都可以是负数，但是一定要保证b的位置在a的后面,不然截取的数组就为空。
+            console.log(re1);
+            var re2=arr.slice(5,-1);
+            console.log(re2);
+            var re3=arr.slice(-5,-3);
+            console.log(re3);
+
+
+
+            //reverse方法：数组倒序输出
+            //返回值：将原来的数组进行倒序，直接改变了原数组，并把原数组的地址值返回出去。
+            var arr1=[1,2,3,4,5,6,7,8,9];
+            arr1.reverse();
+            console.log(arr1);
+        </script>
+    </body>
+</html>

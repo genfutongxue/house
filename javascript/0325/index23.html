@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //ATM机按键
+            //欢迎光临银行，请输入数字选择功能（1.查询余额，2.取钱，3.转账，4.退出）
+            var welcome=prompt("欢迎光临江西银行，请输入数字选择功能（1.查询余额，2.取钱，3.转账，4.退出）");
+            var k=+welcome;
+                switch(k){
+                case 1:
+                    alert("正在查询");
+                    break;
+                case 2:
+                    alert("正在出钞");
+                    break;
+                case 3:
+                    alert("正在转账");
+                    break;
+                case 4:
+                    alert("正在退出");
+                    break;
+                default:
+                    alert("重新输入");
+            }
+        </script>
+    </body>
+</html>

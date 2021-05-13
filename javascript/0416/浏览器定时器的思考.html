@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <script>
+        console.time("开始计时");
+        setTimeout(function () {
+            console.log(1);
+            console.timeEnd("开始计时")
+        }, 1);
+        var num = 0;
+        for (var i = 0; i < 500000000; i++) {
+            num += Math.sqrt(i);
+        }
+    </script>
+</body>
+
+</html>

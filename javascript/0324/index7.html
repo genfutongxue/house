@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <label>
+        成绩<input type="text" id="aaa">
+    </label>
+    <button id="bbb">提交</button>
+    <p id="ddd"></p>
+    <script>
+        /* 在输入框中输入学员成绩，得到对应的等级
+        90-100 S
+        80-89 A
+        70-79 B
+        60-69 C
+        不及格 Z */
+        var oAaa = document.getElementById("aaa");
+        var oBbb = document.getElementById("bbb");
+        var oDdd = document.getElementById("ddd");
+
+        oBbb.onclick = function () {
+            var chengji=+oAaa.value;
+            
+            if (!(chengji >= 0 && chengji <= 100)) {
+                alert("请重新输入");
+                oAaa.value = "";
+                return;
+            }
+            switch (parseInt(chengji/10)) {
+                case 10:
+                case 9:
+                    oDdd.textContent = "S";
+                    break;
+                case 8:
+                    oDdd.textContent = "A";
+                    break;
+                case 7:
+                    oDdd.textContent = "B";
+                    break;
+                case 6:
+                    oDdd.textContent = "C";
+                    break;
+                default:
+                    oDdd.textContent = "Z";
+            }
+        }
+    </script>
+</body>
+
+</html>

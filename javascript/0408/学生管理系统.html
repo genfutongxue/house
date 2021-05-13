@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form action="" id="biaodan">
+        <label>
+            姓名<input type="text" id="ele1">
+        </label>
+        <br>
+        <label>
+            年龄<input type="text" id="ele2">
+        </label>
+        <br>
+        <label>
+            性别<input type="text" id="ele3">
+        </label>
+        <br>
+        <button id="btn" type="button">添加</button>
+    </form>
+    <table id="table" border="1" style="border-collapse: collapse;" width=500>
+        <caption>学生管理系统</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+            <tr>
+                <td>小王</td>
+                <td>29</td>
+                <td>女</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var oBiaodan = document.getElementById("biaodan");
+        var oTable = document.getElementById("table");
+        var oBtn = document.getElementById("btn");
+        var oEle1 = document.getElementById("ele1");
+        var oEle2 = document.getElementById("ele2");
+        var oEle3 = document.getElementById("ele3");
+        var oBody = document.getElementById("body");
+        oBtn.onclick = function (e) {
+            var a = oEle1.value;
+            var b = oEle2.value;
+            var c = oEle3.value;
+            var newTr = document.createElement("tr");
+            newTr.innerHTML = "<td>" + a + "</td>\
+                    <td>"+ b + "</td>\
+                    <td>"+ c + "</td>\
+                    <td><a href='#'>删除</a></td>";
+            oBody.appendChild(newTr);
+
+            //获取所有的a标签，并绑点点击事件
+            var oAs = document.querySelectorAll("#body>tr>td>a");
+            console.log(oAs);
+            oAs.forEach(function (item) {
+                item.onclick = function () {
+                    item.parentNode.parentNode.remove();
+                }
+            });
+        }
+        //最外面也要绑定，因为没有点击之前也可以删除
+        var oAs = document.querySelectorAll("#table>tbody>tr>td>a");
+        oAs.forEach(function (item) {
+            item.onclick = function () {
+                item.parentNode.parentNode.remove();
+            }
+        });
+    </script>
+</body>
+
+</html>

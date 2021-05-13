@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /* let arr = [];
+        for (let i = 2; i < 101; i++) {
+            arr.push(i);
+            for (let j = 2; j < i; j++) {
+                if (i % j === 0) {
+                    arr.pop();
+                    break;
+                }
+            }
+        }
+        console.log(arr); */
+
+
+        let arr=[1,2,3,4,5];
+
+        //复制
+        let newArr=[...arr];
+        console.log(newArr);
+
+        //合并
+        let arr1=[...arr,...newArr];
+        console.log(arr1);
+
+        //解构
+        let [a,b,c,d,e]=arr;
+        console.log(a,b,c,d,e);
+
+        //字符串转数组
+        let str="abcde";
+        let arr2=[...str];
+        console.log(arr2);
+        let obj={
+            [0]:"q",
+            [1]:"w"
+        }
+        // let arr3=[...obj];//obj is not iterable
+        console.log(obj.length)//undefined
+
+        let oLis=document.querySelectorAll("li");
+        console.log(oLis.length)
+        let sss=[...oLis];
+        console.log(sss);
+        console.log(oLis);
+    </script>
+</body>
+
+</html>

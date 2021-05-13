@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //输入单价和数量，计算总价。如果总价大于500 则打八折。然后用户输入付钱，最终弹出找零。
+            //用prompt
+            var price=+prompt("单价");
+            var amount=+prompt("数量");
+            var sum=price*amount;
+            if(sum>500){
+                sum*=0.8;
+                alert("您的金额超过500元，可享受8折优惠！");
+            }
+            function haha(){
+                var qian=+prompt("请付"+sum+"元");
+            if(qian>=sum){
+                alert("找您"+(qian-sum)+"元");
+            }else{
+                alert("钱不够哦！");
+                haha();
+            }
+            }
+            haha();
+        </script>
+    </body>
+</html>

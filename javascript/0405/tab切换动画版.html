@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #box {
+            width: 600px;
+            margin: 50px auto 0;
+        }
+
+        #box #title {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            cursor: pointer;
+        }
+
+        #box #title h2 {
+            margin: 0;
+            width: 200px;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            background-color: darkgray;
+        }
+
+        #box #title h2.hello {
+            color: #fff;
+        }
+
+        #box #content {
+            width: 100%;
+            height: 500px;
+            overflow: auto;
+        }
+
+        #box #content div {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 500px;
+            font-size: 50px;
+        }
+
+        #box #content div:first-child {
+            background-color: darksalmon;
+            color: #FFF;
+        }
+
+        #box #content div:nth-child(2) {
+            background-color: darkseagreen;
+            color: #FFF;
+        }
+
+        #box #content div:last-child {
+            background-color: deepskyblue;
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="title">
+            <h2 class="hello">标题一</h2>
+            <h2>标题二</h2>
+            <h2>标题三</h2>
+        </div>
+        <div id="content">
+            <div class="world">内容一</div>
+            <div>内容二</div>
+            <div>内容三</div>
+        </div>
+    </div>
+    <script>
+        var oH2s = document.querySelectorAll("#box>#title>h2");
+        var oDivs = document.querySelectorAll("#box>#content>div");
+        var oContent = document.getElementById("content");
+        var timer = null;
+        //遍历每一个h2，生成每一个h2被点击后的事件
+        oH2s.forEach(function (item, index) {
+            item.onclick = function () {
+                oH2s.forEach(function (item, index) {
+                    item.classList.remove("hello");
+                });
+                this.classList.add("hello");
+                //设置内容动画
+                //当前点击的起始位置
+                var startLocation = oContent.scrollTop;
+                //结束位置：一个内容的高度*当前点击元素的下标
+                var endLocation = oDivs[0].offsetHeight * index;
+                //设置起始步数
+                var startStep = 0;
+                //设置结束步数
+                var endStep = 20;
+                //计算每一步走的距离
+                var everyStep = (endLocation - startLocation) / (endStep - startStep);
+                //开始动画
+                timer = setInterval(function () {
+                    //滚动条的位置=起始位置+每一步走的距离
+                    startLocation = startLocation + everyStep;
+                    startStep++;
+                    if (startStep >= endStep) {
+                        clearInterval(timer);
+                    }
+                    oContent.scrollTop=startLocation;
+                }, 10);
+            }
+        });
+    </script>
+</body>
+
+</html>

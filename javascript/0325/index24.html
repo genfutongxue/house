@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #box {
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <label>
+        第一个值：<input type="text" id="one">
+    </label>
+    <label>
+        第二个值：<input type="text" id="two">
+    </label>
+    <button id="btn">你点我啊</button>
+    <div id="box"></div>
+    <script>
+        //让用户输入两个值 计算两个值的和,当点击按钮时 让box的宽度和高度发生变化 值为两个值的和
+        var oOne = document.getElementById("one");
+        var oTwo = document.getElementById("two");
+        var oBtn = document.getElementById("btn");
+        var oBox = document.getElementById("box");
+        oBtn.onclick = function () {
+            //这个var要放里面，因为要点击了之后才知道数字是多少
+            var he = Number(oOne.value) + Number(oTwo.value);
+            oBox.style.width = he + "px";
+            oBox.style.height = he + "px";
+        }
+    </script>
+</body>
+
+</html>

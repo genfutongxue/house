@@ -1,0 +1,11 @@
+/* body{
+    background-color:@bgColor;
+    
+} */
+#box {
+  width: 400px;
+  height: 400px;
+  background: url("https://p3-tt.byteimg.com/origin/pgc-image/fb79545fbf4f4a54ab79c1c7d304c34b?from=pc");
+  position: absolute;
+  left: 400px;
+}

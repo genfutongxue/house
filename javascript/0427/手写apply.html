@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //手写apply: 1.改变了this指向  2.执行了函数  3.实参是数组
+        function myApply(obj, arr) {
+            if (obj === null || obj === undefined) {
+                obj = window;
+            }
+            if (typeof obj !== "function" && typeof obj !== "object") {
+                obj=Object(obj);
+            }
+            let f=null;
+            obj[f]=this;
+            eval("obj[f]("+arr.toString()+")");
+            delete obj[f];
+        }
+    </script>
+</body>
+
+</html>

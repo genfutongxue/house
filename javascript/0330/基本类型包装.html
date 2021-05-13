@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            var str="rqwsa";
+            console.log(str.toUpperCase());
+            //过程是下面这样的
+            var str1=new String("rqwsa");
+            console.log(typeof str1);
+            str=str1.toUpperCase();
+            str1=null;
+            console.log(str);
+            //所以不能直接给基本类型创建属性和方法，就算创建了也不知道怎么得到去使用
+        </script>
+    </body>
+</html>

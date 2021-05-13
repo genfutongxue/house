@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* const re = new Promise((revolse, reject) => {
+            setTimeout(() => {
+                console.log(1);
+                // revolse();
+                reject();
+            }, 1000);
+        });
+        console.log(re); */
+
+
+
+        /* console.log(111)
+        const promise = new Promise((resolve, reject) => {
+            console.log(222)
+            // 同步调用
+            //...code
+            // 执行异步操作/异步代码
+            setTimeout(() => {
+                console.log(333)
+                console.log("setTimeout()");
+                resolve('a数据');
+            }, 1000);
+            console.log(444)
+        });
+        console.log(555)
+        console.log(promise) */
+
+        //111,222,444,555,promise,333,setTimeout()
+
+
+
+
+        //promise的原型对象上的than和catch方法：
+        /* const promise=new Promise((revolse,reject)=>{
+            const arr=[1,1,1,11,1,1,1];
+            // revolse(arr);
+            reject(err);
+        });
+        console.log(promise);
+        promise.then((arr)=>{
+            console.log(arr);
+        },
+        (err)=>{
+            console.log(err);
+        }); */
+
+
+        const promise=new Promise((revolse,reject)=>{
+            revolse();
+        });
+        promise.then(()=>{
+            console.log("成功");
+            // console.log(a);
+            return new Promise((revolse,reject)=>{
+                console.log("哈哈");
+                revolse();
+                // reject();
+                // console.log(a);
+            })
+        })
+        .catch(()=>{
+            console.log("错误");
+            console.log(b);
+        })
+        .then(()=>{
+            console.log("正确");
+        })
+        .catch(()=>{
+            console.log("又错了");
+        })
+    </script>
+</body>
+
+</html>

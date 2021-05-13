@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //深拷贝：
+
+        function check(item) {
+            {
+                return Object.prototype.toString.call(item).slice(8, -1).toLowerCase();
+            }
+        }
+
+        function copy(obj) {
+            const re = check(obj);
+            if (re === "object") {
+                var newObj = {};
+            } else if (re === "array") {
+                var newObj = [];
+            } else {
+                return obj;
+            }
+            for (let key in obj) {
+                newObj[key] = copy(obj[key]);
+            }
+            return newObj;
+        }
+        
+
+    </script>
+</body>
+
+</html>

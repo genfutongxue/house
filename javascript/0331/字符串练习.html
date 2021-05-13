@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //找出以上字符串中出现次数最多的字符和出现的次数 
+            var str="asdknvlhoenksjndlasladklalsdajdfsaj";
+            var obj={};
+            //把字符串的每一个下标都装进一个对象里去当作它的属性，出现几次那么属性值就没几
+            for(var i=0;i<str.length;i++){
+                if(obj[str[i]]){
+                    obj[str[i]]++;
+                }else{
+                    obj[str[i]]=1;
+                }
+            }
+            console.log(obj);
+            var s=0;
+            var z="";
+            for(key in obj){
+                if(obj[key]>s){
+                    s=obj[key];
+                    z=key;
+                }
+            }
+            console.log(z,s);
+
+            //截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+            console.log(str.slice(1,6));
+        </script>
+    </body>
+</html>

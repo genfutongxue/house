@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                list-style-type:none;
+            }
+            #outer{
+                position:relative;
+                width:329px;
+                margin:100px auto 0;
+            }
+            #inner{
+                overflow:hidden;
+            }
+            #con{
+                display:flex;
+                width:1400px;
+            }
+            #left,#right{
+                position:absolute;
+                top:50%;
+                margin-top:-15px;
+                width:30px;
+                height:30px;
+                background-color:peru;
+                font-size:30px;
+                line-height:30px;
+                text-align:center;
+            }
+            #left{
+                left:10px;
+            }
+            #right{
+                right:10px;
+            }
+            #round{
+                position:absolute;
+                left:50%;
+                transform:translateX(-50%);
+                list-style-type:none;
+                display:flex;
+                bottom:20px;
+            }
+            #round li{
+                width:10px;
+                height:10px;
+                border-radius:50%;
+                background-color:teal;
+                margin:0 5px 0;
+            }
+            #round li.active{
+                background-color:#fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <div id="inner">
+                <div id="con">
+                    <img src="img/floor-1-b01.png">
+                    <img src="img/floor-1-b02.png">
+                    <img src="img/floor-1-b03.png">
+                    <img src="img/floor-1-b01.png">
+                </div>
+                <div id="left">&lt;</div>
+                <div id="right">&gt;</div>
+                <ul id="round">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            var oInner=document.querySelector("#inner");
+            var oCon=document.querySelector("#con");
+            var oImgs=document.querySelectorAll("#con img");
+            var oLeft=document.querySelector("#left");
+            var oRight=document.querySelector("#right");
+            var oRound=document.querySelector("#round");
+            var oLis=document.querySelectorAll("#round li");
+            var autoMoveTimer=null;
+            var moveTimer=null;
+            var i=0;
+            function autoMove(){
+                autoMoveTimer=setInterval(function(){
+                    clearInterval(moveTimer);
+                    i++;
+                    if(i>=oImgs.length){
+                        i=1;
+                        oInner.scrollLeft=0;
+                    }
+                    move();
+                    roundMove();
+                },2000);
+            }
+            function move(){
+                var startLocation=oInner.scrollLeft;
+                var endLocation=i*oImgs[0].offsetWidth;
+                var startStep=0;
+                var endStep=50;
+                var everyStep=(endLocation-startLocation)/endStep;
+                moveTimer=setInterval(function(){
+                    startStep++;
+                    if(startStep>=endStep){
+                        clearInterval(moveTimer);
+                    }
+                    startLocation+=everyStep;
+                    oInner.scrollLeft=startLocation;
+                },10)
+            }
+            function roundMove(){
+                oLis.forEach(function(item){
+                    item.classList.remove("active");
+                    oLis[i===3?0:i].classList.add("active");
+                });
+            }
+            function clear(){
+                clearInterval(moveTimer);
+                clearInterval(autoMoveTimer);
+            }
+            oLeft.onclick=function(){
+                clear();
+                i--;
+                if(i<0){
+                    i=oImgs.length-2;
+                    oInner.scrollLeft=(oImgs.length-1)*oImgs[0].offsetWidth;
+                }
+                move();
+                roundMove();
+                autoMove();
+            }
+            oRight.onclick=function(){
+                clear();
+                i++;
+                if(i>=oImgs.length){
+                    i=1;
+                    oInner.scrollLeft=0;
+                }
+                move();
+                roundMove();
+                autoMove();
+            }
+            oLis.forEach(function(item,index){
+                item.onclick=function(){
+                    clear();
+                    oLis.forEach(function(item){
+                        item.classList.remove("active");
+                    });
+                    this.classList.add("active");
+                    i=index;
+                    move();
+                    autoMove();
+                }
+            });
+            autoMove();
+        </script>
+    </body>
+</html>

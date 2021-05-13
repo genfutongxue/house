@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        var time = new Date();
+        console.log(+time);
+        var time=new Date("2021-3-30 20:48");
+        console.log(time);
+        var time=new Date(2021,3,30,20,51 );//传参数的话月份是从0到11的
+        console.log(time);
+        var time=new Date(1561564201623);
+        console.log(time);
+
+        //获取详细时间：
+        var time=new Date();
+        console.log(time.getYear());//121
+        console.log(time.getFullYear());//2021
+
+        console.log(time.getMonth());//2   月份从0到11  2代表3月
+
+        console.log(time.getDate());
+
+        console.log(time.getHours());
+
+        console.log(time.getMinutes());
+
+        console.log(time.getSeconds());
+
+        console.log(time.getMilliseconds());
+
+        console.log(time.getDay());
+</script>
+</body>
+
+</html>

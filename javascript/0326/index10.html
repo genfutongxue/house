@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            var x=1;
+            var obj={
+                y=function(){
+                    console.log(this.x);
+                },
+                x=2,
+            }
+            obj.y();//这是obj在调用它下面属性y的函数，所以指向的是obj，所以打印的x的值就是里面的2
+            var r=obj.y;
+            r();//因为调用者是r，所以打印是1
+        </script>
+    </body>
+</html>

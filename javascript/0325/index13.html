@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <input type="text" id="zh">
+    <button type="submit" id="tj">提交</button>
+    <p>
+        我的等级是：<p id="span"></p>
+    </p>
+    <script>
+        var oZh = document.getElementById("zh");
+        var oTj = document.getElementById("tj");
+        var oSpan = document.getElementById("span");
+        oTj.onclick=function(){
+            if (oZh.value >= 0 && oZh.value <= 100) {
+            var cj=parseInt(oZh.value / 10);
+            switch (cj) {
+                case 9:
+                    oSpan.textContent = "S";
+                    break;
+                case 10:
+                    oSpan.textContent = "S";
+                    break;
+                case 8:
+                    oSpan.textContent = "A";
+                    break;
+                case 7:
+                    oSpan.textContent = "B";
+                    break;
+                case 6:
+                    oSpan.textContent = "C";
+                    break;
+                default:
+                    oSpan.textContent = "C";
+            }
+        }else{
+            alert("您输入有误！");
+            oZh.value="";
+        }
+        }
+        
+    </script>
+</body>
+
+</html>

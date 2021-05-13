@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //call:更改this指向
+        var obj1 = {
+            name:"xiaowang",
+            age:15,
+            add:"shenzhen"
+        };
+        function fn(x,y) {
+            console.log(x+y);
+            console.log(this);
+        }
+        // fn.call(obj);//把原本的this指向fn的调用者改成obj
+        /*
+        首先this永远指向函数的调用者，那么要改变this的指向实际上是偷偷的改变了函数的调用者
+        fn.call(obj)=obj.a()给obj增加了一个方法a来调用函数fn，所以fn里面的this就会指向方法a的调用者obj了          
+        */
+        //fn.call(obj)原本fn的this指向的是谁调用它，现在不管谁调用它，强势改成obj
+        Function.prototype.myCall = function (obj) {
+            if (obj === null || obj === undefined) {
+                //如果它是null或者undefined，那就把它变成window
+                obj = window;
+            }
+            if (typeof obj !== "object" && typeof obj !== "function") {
+                //如果它不是对象或者函数，那么它就是基本类型值，就给它包装成对象
+                obj = Object(obj);
+            }
+            //给obj拓展一个a方法，然后把函数的调用者变成a方法的调用者obj，也就是说a的值为this（就是当前这个函数），这样fn.myCall(obj)就相当于obj.a(),所以里面的this就指向了函数的调用者obj了（偷梁换柱）。
+            var a=null;
+            obj[a] = this;
+            //把实参转为数组并截取除了第一个剩下的值
+            var arr=Array.from(arguments).slice(1);
+            //把arr转换成字符串并且让obj的a方法去调用实参
+            eval("obj[a]("+arr.toString()+")");
+            delete obj[a];
+        }
+        fn.myCall(obj1,5,8);
+        fn.myCall(obj1,3,100);
+        fn.myCall(null, 1, 2);
+        fn.myCall(undefined, 1, 2);
+        fn.myCall(1, 1, 2);
+        fn.myCall("12", 1, 2);
+        fn.myCall(true, 1, 2);
+        fn.myCall(Symbol(), 1, 2);
+        fn.myCall(1n, 1, 2);
+        fn.myCall(function () {}, 1, 2);
+        fn.myCall({}, 1, 2);
+        fn.myCall([], 1, 2);
+
+    </script>
+</body>
+
+</html>

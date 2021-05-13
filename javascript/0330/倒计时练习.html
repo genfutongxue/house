@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #timer{
+                font-size:50px;
+                color:#fff;
+                background-color:darkgoldenrod;
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="timer"></div>
+        <script>
+            var oTimer=document.getElementById("timer");
+            var now=new Date();
+            var time=new Date(2021,3,4);
+            oTimer.textContent="距离清明节还有"+Math.floor((time-now)/1000/60/60/24)+"天"
+        </script>
+    </body>
+</html>

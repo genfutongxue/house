@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #outer {
+            position: relative;
+            width: 329px;
+            height: 360px;
+        }
+
+        #inner {
+            overflow: auto;
+        }
+
+        #image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        #left,
+        #right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 50px;
+            color: rgba(0, 200, 200, .4);
+            cursor: pointer;
+
+        }
+
+        #left {
+            left: 0;
+        }
+
+        #right {
+            right: 0;
+        }
+
+        #ball {
+            position: absolute;
+            bottom: 0;
+            padding: 0 0 5px;
+            margin: 0;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            ;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #ball li {
+            margin: auto 3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid green;
+            background-color: lavender;
+            cursor: pointer;
+        }
+
+        #ball li.active {
+            background-color: lawngreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="image">
+                <img src="./images/floor-1-b01.png">
+                <img src="./images/floor-1-b02.png">
+                <img src="./images/floor-1-b03.png">
+                <img src="./images/floor-1-b01.png">
+                <img src="./images/floor-1-b02.png">
+                <img src="./images/floor-1-b03.png">
+            </div>
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+            <ul id="ball">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oOuter = document.getElementById("outer");
+        var oInner = document.getElementById("inner");
+        var oLeft = document.getElementById("left");
+        var oRight = document.getElementById("right");
+        var oImgs = document.querySelectorAll("#image>img");
+        var oLis = document.querySelectorAll("#ball>li");
+        var i = 0;
+        var outerTime = null;
+        function fn() {
+            outerTime = setInterval(function () {
+                clearInterval(innerTime);
+                i++;
+                if (i >= oImgs.length) {
+                    i = 0;
+                }
+                /* oInner.scrollLeft = oImgs[0].offsetWidth * i; */
+                var startLocation = oInner.scrollLeft;
+                var endLocation = i * oImgs[0].offsetWidth;
+                var startStep = 0;
+                var endStep = 100;
+                var everyStep = (endLocation - startLocation) / endStep;
+                var innerTime = setInterval(function () {
+                    startLocation += everyStep;
+                    startStep++;
+                    if (startStep >= endStep) {
+                        clearInterval(innerTime);
+                    }
+                    oInner.scrollLeft = startLocation;
+                }, 10);
+                oLis.forEach(function (item, index) {
+                    item.classList.remove("active");
+                });
+                oLis[i].classList.add("active");
+            }, 3000);
+        }
+        fn();
+        oOuter.onmouseenter = function () {
+            clearInterval(outerTime);
+        };
+        oOuter.onmouseleave = function () {
+            fn();
+        }
+        oLis.forEach(function (item, index) {
+            item.onclick = function () {
+                oLis.forEach(function (item, index) {
+                    item.classList.remove("active");
+                });
+                this.classList.add("active");
+                oInner.scrollLeft = oImgs[0].offsetWidth * index;
+            }
+        });
+        oLeft.onclick = function () {
+            i===0?i=5:i-=1;
+            oInner.scrollLeft= oImgs[0].offsetWidth*i;
+            oLis.forEach(function(item,index){
+                item.classList.remove("active");
+            });
+            oLis[i].classList.add("active");
+        }
+        oRight.onclick = function () {
+            i===5?i=0:i+=1;
+            oInner.scrollLeft= oImgs[0].offsetWidth*i;
+            oLis.forEach(function(item,index){
+                item.classList.remove("active");
+            });
+            oLis[i].classList.add("active");
+        }
+    </script>
+</body>
+
+</html>

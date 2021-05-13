@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            font-size: 24px;
+        }
+
+        .tab {
+            width: 600px;
+            border: 1px solid red;
+        }
+
+        .tab>#title {
+            display: flex;
+            width: 100%;
+            background-color: blanchedalmond;
+        }
+
+        .tab>#title>h2 {
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab>#con {
+            width: 600px;
+            height: 300px;
+        }
+
+        .tab>#con li {
+            width: 600px;
+            height: 300px;
+            display: none;
+        }
+
+        .tab #title .hello {
+            background-color: red;
+            color: white;
+        }
+
+        .tab #con .world {
+            display: flex;
+            justify-content: center;
+            line-height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div id="title">
+            <h2>标题一</h2>
+            <h2 class="hello">标题二</h2>
+            <h2>标题三</h2>
+        </div>
+        <div id="con">
+            <ol>
+                <li>内容一</li>
+                <li class="world">内容二</li>
+                <li>内容三</li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        var oHellos = document.getElementsByTagName("h2");
+        var oWorlds = document.getElementsByTagName("li");
+        for (var i = 0; i < oHellos.length; i++) {
+            oHellos[i].under = i;
+            oHellos[i].onclick = function () {
+                for (var i = 0; i < oHellos.length; i++) {
+                    oHellos[i].classList.remove("hello");
+                    oWorlds[i].classList.remove("world");
+                }
+                this.classList.add("hello");
+                oWorlds[this.under].classList.add("world");
+            }
+        }
+    </script>
+</body>
+
+</html>

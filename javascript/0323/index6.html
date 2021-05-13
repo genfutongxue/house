@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            /* 
+            两个关系比较一定会转换为Boolean值(要么对要么错)：>  <  >=  <=
+            */
+           //string对比是从开头比大小，前面相同则往后对比
+           var a="8",b="21";
+           console.log(a<b);//false
+           console.log(a>=b);//true
+           console.log(a>null);//true
+           console.log(a<undefined);//false
+           console.log(a>"as");//false
+           console.log(a<true);//false
+           console.log(a>false);//true
+           /*
+            （数字>string,数字优先）
+            有number的对比就全部转number来对比
+            没有number但是有string的情况下转换为string来对比
+            null和undefined一定是转数字对比的
+            object和objecct对比转string
+            object和其他对比转number
+           */
+          console.log([a,b]>[b,a])//都是object的情况下转为string对比，所以是true
+          console.log({}>[])//所以是true
+          console.log(String({}));//[object object]
+          console.log(String([]));//空
+        </script>
+    </body>
+</html>

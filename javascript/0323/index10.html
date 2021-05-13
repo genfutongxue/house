@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <input type="text" id="phone">
+        <button id="btn">
+            按钮
+        </button>
+        <script>
+            //输入手机号，如果是纯数字 则弹出成功，否则没有效果
+            var oPhone=document.getElementById("phone");
+            var oBtn=document.getElementById("btn");
+            oBtn.onclick=function(){
+                var zhi=oPhone.value;
+                if (!isNaN(zhi)){
+                    alert("duile");
+                }else{
+                    alert("cuole");
+                }
+            }
+            //!isNaN是关键
+        </script>
+    </body>
+</html>

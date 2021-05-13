@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部基础版</title>
+    <style>
+        .box{
+            width: 140px;
+            height: 80px;
+            background-color: red;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 80px;
+            display: none;
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+
+        .con{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        回到顶部
+    </div>
+    <div class="con">
+        hello <br>
+        world <br>
+    </div>
+    <script>
+        //回到顶部
+        //当滚动条下滑到指定位置时显示出按钮，点击按钮就可以慢慢的回到顶部了
+        //获取元素
+        var oCon=document.querySelector(".con");
+        var oBox=document.querySelector(".box");
+        //监听系统滚动条事件
+        window.onscroll=function(e){
+            //滚动条兼容性
+            if((window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop)>=500){
+                oBox.style.display="block";
+            }else{
+                oBox.style.display="none";
+            }
+        }
+        //点击按钮回到顶部事件
+        oBox.onclick=function(){
+            //点击的时候要先清掉计时器
+            clearInterval(timer);
+
+            //先获取现在的系统滚动条的位置
+            var startLocation=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+            
+            //设置一个动画（间歇定时器）
+            var endLocation=0;
+            var startStep=0;
+            var endStep=50;
+            var everyMove=(endLocation-startLocation)/endStep;
+            var everyTime=10;
+            var timer=setInterval(function(){
+                //让系统滚动条缓慢回到顶部
+                startStep++;
+                if(startStep>=endStep){
+                    clearInterval(timer);
+                }
+                startLocation+=everyMove;
+                //给系统滚动条赋值:用通用的方法去设置
+                window.scrollTo(0,startLocation);
+            },everyTime);
+            
+
+        }
+    </script>
+</body>
+</html>

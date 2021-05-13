@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            height: 5000px;
+            background-color: gray;
+        }
+
+        #totop {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+            color: #FFF;
+            border-top-left-radius: 5%;
+            background-color: coral;
+            display: none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="totop">
+        回到顶部
+    </div>
+    <script>
+        var oTotop = document.getElementById("totop");
+        window.onscroll = function () {
+            var weizhi = window.pageYOffset;
+            if (weizhi >= 500) {
+                oTotop.style.display = "block";
+            }else{
+                oTotop.style.display="none";
+            }
+        }
+        oTotop.onclick=function(){
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+
+</html>

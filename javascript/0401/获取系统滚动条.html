@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body{
+                height:5000px;
+            }
+            #btn{
+                position:fixed;
+                top:0;
+                left:0;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="btn">按钮</button>
+        <script>
+            //获取系统的滚动条
+            var oBtn=document.getElementById("btn");
+            oBtn.onclick=function(){
+                /* document.documentElement.scrollTop=1200; */
+                window.scrollTo(0,1200);
+                /* console.log(document.documentElement.scrollTop);
+                console.log(document.documentElement.scrollLeft); */
+                console.log(window.pageXOffset);
+                console.log(window.pageYOffset);
+            }
+            
+        </script>
+    </body>
+</html>

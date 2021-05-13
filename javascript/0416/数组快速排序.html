@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        var arr = [1, 1, 15, 51, 1, 1, 6155, 1, 0, 12, 1212, 0, 6548, 123,];
+        //数组快速排序：
+        //思想：先去出数组中的一个数，拿它左基准值，遍历其他数去和它比较，比它大的放右边，比它小的放左边，然后呢，把得到的数组又继续进行前一个方法，这就是函数的递归思想，所以先创建个函数
+        function fastQueue(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            var a = arr.pop();
+            var left = [];
+            var right = [];
+            arr.forEach(function (item) {
+
+                if (item > a) {
+                    right.push(item);
+                } else {
+                    left.push(item);
+                }
+
+            });
+            //然后就把他们拼接起来，拼接的时候呢，把数组放到函数离去检测，如果是长度为1，则直接返回
+            var newArr = fastQueue(left).concat(a, fastQueue(right));
+            return newArr;
+
+        }
+        var re = fastQueue(arr);
+        console.log(re);
+    </script>
+</body>
+
+</html>

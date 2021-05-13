@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            /* 
+            手写push
+            手写pop
+            peek:返回栈顶元素 不对栈做修改
+            isEmpty 判断栈中是否为空，返回布尔值
+            clear:清空整个栈
+            */
+
+            var m=[1,2,3,1];
+            function push(m,n){
+                m[m.length]=n;
+                return m.length;
+            }
+            var y=push(m,"x");
+            console.log(y);
+            console.log(m);
+
+
+            function pop(m){
+                var n=m[m.length-1];
+                m.length=m.length-1;
+                return n;
+            }
+            var z=pop(m);
+            console.log(z);
+            console.log(m);
+
+
+            function peek(m){
+                return m[m.length-1];
+            }
+            console.log(peek(m));
+
+
+            function isEmpty(m){
+                if(m.length>0){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            console.log(isEmpty(m));
+
+
+            function isEmpty(m){
+                return m.length===0;
+            }
+            console.log(isEmpty(m));
+
+
+            function clear(m){
+                m.length=0;
+            }
+            clear(m);
+            console.log(isEmpty(m));
+        </script>
+    </body>
+</html>

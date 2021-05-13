@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .big{
+                width:500px;
+            }
+            .big .small1{
+                width:100%;
+                height:40px;
+                background-color:indianred;
+                color:#fff;
+                text-align:center;
+                line-height:40px;
+                font-size:20px;
+            }
+            .big .small2{
+                width:100%;
+                height:400px;
+                background-color:grey;
+                text-align:center;
+                line-height:400px;
+                color:#fff;
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="big">
+            <div class="small1">标题</div>
+            <div class="small2">内容</div>
+        </div>
+        <script>
+            var oBig=document.getElementsByClassName("big");
+            var oSmall1=document.getElementsByClassName("small1");
+            var oSmall2=document.getElementsByClassName("small2");
+            var time=null;
+            oBig[0].onmouseenter=function(){
+                clearTimeout(time);
+                oSmall2[0].style.display="block";
+            }
+            oBig[0].onmouseleave=function(){
+                time=setTimeout(function(){
+                    oSmall2[0].style.display="none";
+                },1000);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            /* var obj1={};
+            obj1.name=1;
+            obj1.age=2;
+            obj1.add=function(){
+                console.log(1);
+            }
+            var obj2={};
+            obj2.name=2;
+            obj2.age=3;
+            obj2.add=function(){
+                console.log(1);
+            } */
+
+
+            /* function fn(a,b){
+                var obj={};
+                obj.name=a;
+                obj.age=b;
+                obj.add=function(){
+                    console.log(1);
+                }
+                return obj;
+            }
+            console.log(fn(1,2)); */
+
+            /* function Fn(name,age){
+                //构造函数里面的this指向实例化对象
+                this.Name=name;
+                this.Age=age;
+                this.add=function(){}
+            }
+            console.log(new Fn(1,2));//返回的是一个实例化对象
+            console.log(new Fn(2,4)); */
+            //没实例化一个对象都会给实例化对象添加一个add方法
+
+
+            //如果把共同拥有的方法添加在构造函数的原型对象上的话，那么构造函数的实例化对象也能使用
+            function Fn(name,age){
+                this.Name=name;
+                this.Age=age;
+            }
+            Fn.prototype.add=function(){
+                console.log(1);
+            }
+             var a=new Fn(1,2);
+             var b=new Fn(2,3);
+             console.log(a.add,b.add);//通过隐式原型(原型链)去寻找到原型对象上有add方法
+        </script>
+    </body>
+</html>

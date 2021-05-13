@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="red">红色</button>
+        <button id="yellow">黄色</button>
+        <button id="pink">粉色</button>
+        <button id="green">绿色</button>
+        <script>
+            function x(a,b,c,d,e,f,g){
+                console.log(arguments);//只能在当前函数中使用，只作用于函数,实参的集合就叫arguments，只能在函数里面才能获取
+                console.log(arguments.length);//arguments也有length属性，代表实参的长度。只能在函数里面才能获取
+                console.log(x.length);
+            }
+            x(5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5);
+            console.log(x.length);//函数的length属性代表形参的长度,在函数外面也可以获取形参的长度
+            console.log("-------------------------------------------");
+            //切换颜色
+            //1.获取元素
+            var oRed=document.getElementById("red");
+            var oYellow=document.getElementById("yellow");
+            var oPink=document.getElementById("pink");
+            var oGreen=document.getElementById("green");
+            //2.做一个函数，让它改变形参的时候背景颜色就改变
+            function fn(color){
+                document.body.style.background=color;
+            }
+            //3.绑定点击事件
+            oRed.onclick=function(){
+                fn("red");
+            }
+            oYellow.onclick=function(){
+                fn("yellow");
+            }
+            oPink.onclick=function(){
+                fn("pink");
+            }
+            oGreen.onclick=function(){
+                fn("green");
+            }
+        </script>
+    </body>
+</html>

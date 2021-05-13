@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            height: 5000px;
+        }
+
+        #btn {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            font-size: 20px;
+            color: coral;
+            border: none;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">回到顶部</button>
+    <script>
+        var oBtn = document.getElementById("btn");
+        var weizhi = null;
+        //实时检测窗口滚动的滚动，当滚动到某个位置的时候，让回到顶部出现，否则不出现
+        window.onscroll = function () {
+            weizhi = window.pageYOffset;
+            if (weizhi > 500) {
+                oBtn.style.display = "block";
+            } else {
+                oBtn.style.display = "none";
+            }
+        }
+        //设置滚动动画，当按钮点击的时候滚动条回到0的位置
+        var timer=null;
+        oBtn.onclick=function(){
+            clearInterval(timer);
+            timer=setInterval(function(){
+                weizhi-=20;
+                if(weizhi<=0){
+                    window.scrollTo(0,0);
+                    clearInterval(timer);
+                }
+                window.scrollTo(0,weizhi);
+            },1);
+        }
+    </script>
+</body>
+
+</html>

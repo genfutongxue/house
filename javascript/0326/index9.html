@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        function fn() {
+            console.log(this);//谁调用的它，this指的就是谁，所以这指的是window
+        }
+        fn();//很显然这是window在调用这个函数的
+
+
+        var h = {
+            name: "kangkang",
+            age: 565,
+            add: "shenzhen",
+            x: function () {
+                console.log(this);//this指的是h
+                fn();//只有window可以调用它，h只是在执行这个函数， 
+
+            },
+            do: fn,//this指的是h
+        }
+        h.x();
+        h.do();
+
+        var k = h.do;//隐式丢失    就是让别人去调用这个函数，h没有亲自动手，所以this指的不是它
+        k();
+
+        document.onclick = fn;
+
+
+        /* function inner() {
+            console.log(this);//this指的是window
+        }
+
+        function outer() {
+            inner()
+        }
+        outer(); */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <script>
+        //用户输入的账号和密码,只要账号不是laowang ,密码不是 88888,我们就一直提示请重新输入,否则 提出输入成功
+        //1.先创建两个弹窗，并且用变量去接收
+        var userName = prompt("账号");
+        var passWord = prompt("密码");
+        //2.用while循环去进行判定，判定不正确就继续弹窗，直到判定成功
+        /* while(!(userName=="laowang"&&passWord=="88888")){
+            userName=prompt("账号");
+            passWord=prompt("密码");
+        }
+        alert("成功"); */
+        /* while (userName != "laowang" || passWord != "88888") {
+            userName = prompt("账号");
+            passWord = prompt("密码");
+        }
+        alert("成功"); */
+
+        //2.用for循环去判定
+        /* for(var userName = prompt("账号"),passWord = prompt("密码");userName != "laowang" || passWord != "88888";){
+            userName = prompt("账号");
+            passWord = prompt("密码");
+        }
+        alert("成功"); */
+        //3.用if语句的递归调用方法去做
+        //输入完一次后要返回去继续调用，所以用一个函数包裹if，条件不满足就返回函数继续，直到答案正确
+        function xunhuan() {
+            if (userName != "laowang" || passWord != "88888") {
+                //不满足条件就弹出弹窗继续输入
+                userName = prompt("账号");
+                passWord = prompt("密码");
+                //完了之后要进行继续判定，所以返回函数
+                xunhuan();
+            }else{
+                alert("成功");
+            }
+
+        }
+        //使用这个函数;
+        xunhuan();
+    </script>
+</body>
+
+</html>

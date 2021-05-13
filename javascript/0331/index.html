@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #hello{
+                outline:none;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="hello">
+        <button type="submit" id="world">按钮</button>
+        <script>
+            var oHello=document.getElementById("hello");
+            var oWorld=document.getElementById("world");
+            oWorld.onclick=function(){
+                /* if(oHello.value===""){
+                    oHello.style.borderColor="red";
+                }else{
+                    oHello.style.borderColor="#000";
+                } */
+                /* if(oHello.value){
+                    oHello.style.borderColor="#000";
+                }else{
+                    oHello.style.borderColor="red";
+                } */
+                if(oHello.value.length===0){
+                    oHello.style.borderColor="red";
+                }else{
+                    oHello.style.borderColor="#000";
+                }
+            }
+        </script>
+    </body>
+</html>

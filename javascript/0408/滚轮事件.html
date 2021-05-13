@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #box{
+                position:fixed;
+                width:100px;
+                height:100px;
+                background-color:darkcyan;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="box">
+
+        </div>
+        <script>
+            var oBox=document.getElementById("box");
+            var top=0;
+            function fn(e){
+                if(e.wheelDelta>0){
+                    top++;
+                    if(top<=0){
+                        top=0;
+                    }else if(top>=document.documentElement.clientY-oBox.offsetHeight){
+                        top=document.documentElement.clientY-oBox.offsetHeight;
+                    }
+                }else{
+                    top--;
+                    if(top<=0){
+                        top=0;
+                    }else if(top>=document.documentElement.clientY-oBox.offsetHeight){
+                        top=document.documentElement.clientY-oBox.offsetHeight;
+                    }
+                }
+                oBox.style.width=top+"px";
+            }
+            oBox.addEventListener("DOMMouseScroll",fn,false);
+            oBox.onmousewheel=fn;
+        </script>
+    </body>
+</html>

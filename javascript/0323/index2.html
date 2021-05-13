@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <label>
+        用户名<input type="text" id="user">
+    </label>
+    <label>
+        密码<input type="password" id="psword">
+    </label>
+    <button type="submit" id="btn">登录</button>
+    <script>
+        //获取元素
+        var oUser = document.getElementById("user");
+        var oPsword = document.getElementById("psword");
+        var oBtn = document.getElementById("btn");
+        //绑定点击事件，用一个函数，当点击的时候函数执行
+        oBtn.onclick = function () {
+            //获取输入框的值，用value属性
+            var userName = oUser.value;
+            var passWord = oPsword.value;
+            //判断当用户名的值为10~15位数的时候，则进行下一步判断你，当密码框的内容为10~20位数的时候则弹出”welcome,否则弹出请重新输入密码，并清空密码，若两个都不满足，则清空两个，并弹出输入有误
+            if (userName.length >= 10 && userName.length <= 15) {
+                if (passWord.length >= 10 && passWord.length <= 20){
+                    alert("welcome");
+                }else{
+                    alert("密码输入错误，请重新输入");
+                    oPsword.value="";
+                }
+            }else{
+                alert("您输入错误，请重新输入");
+                oPsword.value="";
+                oUser.value="";
+            }
+        }
+    </script>
+</body>
+
+</html>

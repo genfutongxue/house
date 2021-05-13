@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 1450px;
+            height: 650px;
+            margin: 0;
+            background-color: gainsboro;
+        }
+
+        #box {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            border-radius: 19px;
+            background-color: #FF6900;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var oBox = document.getElementById("box");
+        var oBody = document.querySelector("body");
+        var x = 0;
+        var y = 0;
+        var width = oBody.clientWidth;
+        var height = oBody.clientHeight;
+        var flagX = true;
+        var flagY = true;
+        setInterval(function () {
+            if (flagX) {
+                x++;
+                if (x >= width) {
+                    flagX = !flagX;
+                }
+            } else {
+                x--;
+                if (x <= 0) {
+                    flagX = !flagX;
+                }
+            }
+            if (flagY) {
+                y++;
+                if (y >= height) {
+                    flagY = !flagY;
+                }
+            } else {
+                y--;
+                if (y <= 0) {
+                    flagY = !flagY;
+                }
+            }
+            oBox.style.left = x + "px";
+            oBox.style.top = y + "px";
+        }, 1);
+    </script>
+</body>
+
+</html>

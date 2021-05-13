@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            //检测数据类型：
+            //typeof方法：typeof()可以检测出undefined   string   number   boolean   function
+            //全等判断：===可以检测出null  undefined
+            //Object.prototype.toString.call():可以检测任意类型的值  [object number]
+            //完整的写法是：Object.prototype.toString.call().slice(8,-1).toLowerCase();
+            //要把需要检测的数据变成对象再去toString()
+            console.log(({}).toString.call(45));//[object Number]
+            console.log(Object.prototype.toString.call("asda"));//[object String]
+            //对象的toString方法返回的是一个数组，有点特别，别的类型的toString方法返回的都是字符串
+        </script>
+    </body>
+</html>

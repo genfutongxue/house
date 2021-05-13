@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <input type="text" id="ipt">
+        <br>
+        <button id="btn">提交</button>
+        <br>
+        <p id="content"></p>
+        <script>
+            //1.获取元素
+            var oIpt=document.getElementById("ipt");
+            var oBtn=document.getElementById("btn");
+            var oContent=document.getElementById("content");
+            //2.用函数绑定点击事件
+            oBtn.onclick=function(){
+                if(oIpt.value>=0&&oIpt.value<=100){
+                    var chengji=parseInt(oIpt.value/10);
+                    switch(chengji){
+                        case 10:
+                        oContent.textContent="S";
+                            break;
+                        case 9:
+                        oContent.textContent="S";
+                            break;
+                        case 8:
+                        oContent.textContent="A";
+                            break;
+                        case 7:
+                        oContent.textContent="B";
+                            break;
+                        case 6:
+                        oContent.textContent="C";
+                            break;
+                        default:
+                        oContent.textContent="Z";
+                    }
+                }else{
+                    alert("错了");
+                    oIpt.value="";
+                }
+                
+            }
+        </script>
+    </body>
+</html>

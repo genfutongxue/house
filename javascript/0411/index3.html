@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /* function fn1(a) {
+            console.log(a);//1
+            var a = 2;
+            console.log(a);//2 
+        }
+        fn1(1); */
+
+
+        /* function fn2() {
+            console.log(foo);//ƒ foo() { }  函数提升优先于变量
+            var foo = 1;
+            function foo() { }
+            console.log(foo);//这时候foo已经赋值了
+        }
+        fn2(); */
+
+
+        /* function a() { }
+        var a;
+        console.log(typeof a) *///变量提升不不会影响函数的提升，变量在函数已经存在的清况下会被忽略
+
+
+        /* var c = 1
+        function c(c) {
+            console.log(c)
+            var c = 3
+        }
+        c(2); *///会报错。因为c已经给它赋值了为1，所以它保存的就不是一个函数的地址
+
+
+        /* var c;
+        function c(c) {
+            console.log(c);
+            var c = 3;
+        }
+        c(2); *///这个时候虽然前面c声明了为一个变量，但是后面函数声明了c为一个函数，所以函数优先，那么c就是一个函数
+
+
+
+        /* var a = 10,
+            b = 20
+        function fn(x) {
+            var a = 100,
+                c = 300;
+            console.log('fn()', a, b, c, x);//"fn()" 100 20 300 10
+            function bar(x) {
+                var a = 1000,
+                    d = 400
+                console.log('bar()', a, b, c, d, x);
+            }
+
+            bar(100);//"bar()" 1000 20 300 400 100
+            bar(200);//"bar()" 1000 20 300 400 200
+        }
+        fn(10); */
+
+
+
+        /* var x = 10;
+        function fn() {
+            console.log(x);
+        }
+        function show(f) {
+            var x = 20;
+            f();
+        }
+        show(fn); */
+
+
+
+        /* var fn = function () {
+            console.log(fn)
+        }
+        fn() */
+
+        /* var obj = {
+            fn2: function () {
+                console.log(fn2);//报错，因为当前作用域下没有fn2，沿着作用域链去寻找也没有找到
+            }
+        }
+        obj.fn2(); */
+
+
+        var scope = "global scope";
+        function checkscope() {
+            var scope = "local scope";
+            function f() {
+                return scope;
+            }
+            return f();
+        }
+        console.log(checkscope());
+
+        var scope = "global scope";
+        function checkscope() {
+            var scope = "local scope";
+            function f() {
+                return scope;
+            }
+            return f;
+        }
+        console.log(checkscope()());
+
+    </script>
+</body>
+
+</html>

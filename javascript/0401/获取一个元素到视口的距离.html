@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .d{
+                width:200px;
+                height:500px;
+                margin:200px 200px;
+                border:20px solid green;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d"></div>
+        <script>
+            var oD=document.getElementsByClassName("d");
+            var a=oD[0].getBoundingClientRect();
+            console.log(a);
+        </script>
+    </body>
+</html>

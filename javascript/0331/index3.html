@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="ipt" autocomplete="off">
+        <button id="btn">按钮</button>
+        <div id="div"></div>
+        <script>
+            //每次点击按钮的时候，让con的内容的数值 每次加2
+            /* var oBtn=document.getElementById("btn");
+            var oDiv=document.getElementById("div");
+            oBtn.onclick=function(){
+                oDiv.textContent=2+(+oDiv.textContent);
+            } */
+
+            //每次可以再输入框输入名字 然后点击以后 名字可以累加在p标签中 并且每个名字换行显示
+            var oBtn=document.getElementById("btn");
+            var oDiv=document.getElementById("div");
+            var oIpt=document.getElementById("ipt");
+            oBtn.onclick=function(){
+                oDiv.innerHTML+=oIpt.value+"<br>";
+            }
+        </script>
+    </body>
+</html>
