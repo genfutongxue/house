@@ -11,14 +11,14 @@
     //引入express-session模块
     const session = require("express-session");
     //引入connect-mongo模块，并且将其设置成一个express-session的持久化仓库
-    const MongoStore = require("connect-mongo")(session);
+    const mongoStore = require("connect-mongo")(session);
     //然后设置中间件
     app.use(session({
         name: 'id22', // 将sessionid存储到cookie中的键
         secret: 'atguigu', //参与加密的字符串（又称签名）
         saveUninitialized: false, //是否为每次请求都设置一个cookie用来存储session的id
         resave: true, //是否在每次请求时重新保存session
-        store: new MongoStore({
+        store: new mongoStore({
             url: 'mongodb://localhost:27017/test-app',
             touchAfter: 24 * 3600, // 24小时之内只修改一次
         }),

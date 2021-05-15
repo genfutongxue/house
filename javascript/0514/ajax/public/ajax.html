@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script src="./myAjax(promise).js"></script>
+    <script>
+        const oBtn = document.querySelector("button");
+        /* oBtn.onclick=function(){
+            //创建xhr对象
+            const xhr=new XMLHttpRequest();
+
+            //设置请求首行
+            // xhr.open("get","http://127.0.0.1:5000/hehe?name=laowang");
+            xhr.open("post","http://127.0.0.1:5000/hehe");
+
+            //如果是post请求要设置响应头,如果不设置，那么得到的xhr.responseText就是一个空对象
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            //设置请求主体并且发送请求
+            // xhr.send();
+            xhr.send("name=laowang");
+
+            //监听xhr.readyState的状态变化
+            xhr.onreadystatechange=function(){
+                //当状态为4的时候就是响应完成了
+                if(xhr.readyState===4){
+                    //当响应头的状态码为200的时候就是成功了
+                    if(xhr.status===200){
+                        //获取响应主体的数据
+                        console.log(xhr.responseText);
+                    }
+                }
+            }
+        } */
+
+        oBtn.onclick = async function () {
+            const re = await myAjax({
+                url: "http://127.0.0.1:5000/hehe",
+                type: "get",
+                data: {
+                    name: "小明",
+                    age: 45,
+                },
+                success: (a) => console.log("成功", a),
+                error: (a) => console.log("错误", a),
+                // complete:()=>console.log("完成了"),
+                // beforeSend:()=>{console.log("发送之前打印的");return true},
+                // timeout:2000,
+                // dataType:"text",
+            });
+            console.log(re);
+
+        }
+    </script>
+</body>
+
+</html>

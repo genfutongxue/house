@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+    <style>
+        #box{
+            width:200px;
+            height:200px;
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        const oBox=document.querySelector("#box");
+        oBox.onclick=function(){
+            //创建xhr对象
+            const xhr=new XMLHttpRequest();
+            console.log(xhr.readyState);
+
+            //设置请求首行的内容
+            xhr.open("get","http://127.0.0.1:5000/hehe?name=laowang&age=60");
+            // xhr.open("post","http://127.0.0.1:5000/hehe");
+            console.log(xhr.readyState);
+
+            //如果是post请求要设置响应头,如果不设置，那么得到的xhr.responseText就是一个空对象
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            //设置请求主体并且发送请求
+            xhr.send();
+            // xhr.send("name=laowang&age=60&add=shenzhen");
+
+            //监听xhr.readyState的状态码
+            xhr.onreadystatechange=function(){
+                console.log(xhr.readyState);
+                //如果状态码为4，那么就响应完成了
+                if(xhr.readyState===4){
+                    //如果响应头的状态码为200那么就表示响应成功了
+                    if(xhr.status===200){
+                        //获取响应主体的内容是xhr.responseText
+                        console.log(xhr.responseText);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

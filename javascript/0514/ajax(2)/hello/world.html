@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax练习</title>
+</head>
+<body>
+    <script>
+        document.onclick=function(){
+            //创建xhr对象
+            const xhr=new XMLHttpRequest();
+
+            //设置请求首行的内容
+            // xhr.open("get","http://127.0.0.1:5000/hehe?name=laowang&age=60&add=ganzhou");
+            xhr.open("post","http://127.0.0.1:5000/hehe");
+
+            //如果是post请求要设置响应头,如果不设置，那么得到的xhr.responseText就是一个空对象
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            //设置响应主体的内容并发送响应
+            // xhr.send();
+            xhr.send("name=laowang&age=60&add=ganzhou");
+
+            //监听xhr.readyState的状态
+            xhr.onreadystatechange=function(){
+                //如果响应完成了那么状态为4
+                if(xhr.readyState===4){
+                    //如果响应成功了那么响应头的状态码为200
+                    if(xhr.status===200){
+                        console.log(xhr.responseText);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax练习</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script src="./myAjax.js"></script>
+    <script>
+        const oBox = document.querySelector("#box");
+        /* oBox.onclick = function () {
+            //点击就发送ajax请求
+            //1.首先要创建xhr模块
+            const xhr = new XMLHttpRequest();
+
+            //2.设置请求首行
+            // xhr.open("get","http://127.0.0.1:5000/haha?ws=laowang");
+            xhr.open("post","http://127.0.0.1:5000/haha");
+
+            //3.如果是post请求要设置请求头
+            xhr.setRequestHeader("content-type","appication/x-www-form-urlencoded");
+
+            //4.设置请求主体并发送
+            // xhr.send();
+            xhr.send("ws=laowang");
+
+            //5.监听请求的状态
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    console.log("完成了");
+                    if(xhr.status===200){
+                        console.log("请求成功了");
+                    }
+                }
+            }
+        } */
+       
+        oBox.onclick = function () {
+            myAjax({
+                url: "http://127.0.0.1:5000/haha",
+                data: { name: "xiaoming", add: "shenzhen" },
+                type: "post",
+                dataType:"json",
+                success: (a) => console.log(a),
+            });
+        }
+    </script>
+</body>
+
+</html>
