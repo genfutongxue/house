@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .chatbox {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .messages {
+            height: 350px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ccc;
+            overflow: scroll;
+        }
+
+        .messages h5 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .messages p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .self {
+            text-align: right;
+        }
+
+        .other {
+            text-align: left;
+        }
+
+        .form {
+            height: 150px;
+        }
+
+        .form .input {
+            height: 110px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form .btn {
+            height: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid #ccc;
+        }
+
+        .form textarea {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .form input {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 20px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>图灵机器人</h3>
+        <div class="chatbox">
+            <!-- 聊天内容框 -->
+            <div class="messages">
+                <!-- 用户输入内容 -->
+                <div class="self">
+                    <h5>根福同学</h5>
+                    <p>我输入的内容</p>
+                </div>
+                <!-- 对方输入内容 -->
+                <div class="other">
+                    <h5>机器人</h5>
+                    <p>机器人说的话</p>
+                </div>
+            </div>
+            <!-- 聊天输入框 -->
+            <div class="form">
+                <!-- 可输入的长文本区域 -->
+                <div class="input">
+                    <textarea></textarea>
+                </div>
+                <!-- 发送按钮 -->
+                <div class="btn">
+                    <input type="submit" value="发送" id="btn">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //封装个函数去处理这些事情
+        function send() {
+            //获取输入框的内容
+            const oTextarea = document.querySelector(".input textarea");
+            const oMessages = document.querySelector(".messages");
+            const selfText = oTextarea.value;
+            //获取到数据之后就把输入框的内容清空
+            oTextarea.value = "";
+            //如果没有内容就直接返回
+            if (!selfText) return;
+
+            //有内容就执行后面的代码，把内容动态的添加到页面中
+            const date = Date.now();
+            const dataStr = `<div class="self" id="${date}">
+                            <h5>根福同学</h5>
+                            <p>${selfText}</p>
+                        </div>`;
+            oMessages.innerHTML += dataStr;
+            //添加完内容之后要把最新的内容显示出来
+            //获取到添加的元素
+            const oSlef = document.getElementById(date);
+            oSlef.scrollIntoView();
+
+
+            //然后把数据传给服务器
+            const xhr = new XMLHttpRequest();
+            xhr.open("post", "http://www.tuling123.com/openapi/api");
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            //要给机器人发送指定的信息
+            xhr.send(`key=c7bccfe6147144e6858d04a10f53141e&info=${selfText}&userid=335220`);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //成功了机器人服务器会自动返回数据，因为返回的是JSON格式的字符串，但是要用的是里面的某一个值，所以转成对象来获取
+                    const { text } = JSON.parse(xhr.responseText);
+                    const date = Date.now();
+                    const dataStr = `<div class="other" id="${date}">
+                        <h5>机器人</h5>
+                        <p>${text}</p>
+                    </div>`;
+                    oMessages.innerHTML += dataStr;
+                    const oOther=document.getElementById(date);
+                    oOther.scrollIntoView();
+                }
+            }
+        }
+
+        //按下enter事件
+        const oTextarea = document.querySelector(".input textarea");
+        oTextarea.onkeyup = function (e) {
+            if (e.keyCode === 13) {
+                send();
+            }
+        }
+
+        //鼠标点击发送事件
+        const oBtn = document.getElementById("btn");
+        oBtn.onclick = function () {
+            send();
+        }
+    </script>
+</body>
+
+</html>

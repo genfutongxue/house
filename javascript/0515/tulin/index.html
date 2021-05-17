@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ajax</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .chatbox {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .messages {
+            height: 350px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ccc;
+            overflow: scroll;
+        }
+
+        .messages h5 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .messages p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .self {
+            text-align: right;
+        }
+
+        .other {
+            text-align: left;
+        }
+
+        .form {
+            height: 150px;
+        }
+
+        .form .input {
+            height: 110px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form .btn {
+            height: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid #ccc;
+        }
+
+        .form textarea {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .form input {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 20px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>高级智能机器人</h3>
+    <div class="chatbox">
+        <!-- 聊天内容 -->
+        <div class="messages">
+            <!-- <div class="self">
+        <h5>我说</h5>
+        <p>你好</p>
+      </div>
+      <div class="other">
+        <h5>对方说</h5>
+        <p>你好</p>
+      </div> -->
+        </div>
+        <div class="form">
+            <div class="input">
+                <textarea></textarea>
+            </div>
+            <div class="btn">
+                <input type="button" value="发送" id="btn" />
+            </div>
+        </div>
+    </div>
+    <script>
+        //获取元素
+        const oBtn = document.getElementById("btn");
+        const oTextarea = document.querySelector(".input>textarea");
+        const oMessages = document.querySelector(".messages");
+        //注册点击事件
+        oBtn.onclick = function () {
+            //获取输入框的内容
+            const myText = oTextarea.value.trim();
+            //获取完之后把输入框的内容清空
+            oTextarea.value = "";
+            //判断如果输入框没有内容，就直接返回了，不用进行下一步
+            if (!myText) return;
+
+            //下面先把获取到的内容处理一下拼接起来
+            //给对应的div添加id属性，并且要是唯一的值，用时间撮，(或者用一个计数器，每添加一次就++)
+            const myDate = Date.now();
+            const myStr = `<div class="self" id="${myDate}">
+                                <h5>我说</h5>
+                                <p>${myText}</p>
+                            </div>`
+            //把拼接好的字符串给信息框加上去，要+=，不然会把之前的覆盖掉
+            oMessages.innerHTML += myStr;
+            //要把最新的聊天信息展示在最下面
+            const oSelf = document.getElementById(myDate);
+            //下面这行代码就是把目标元素显示出来，注意是目标元素不是有滚动条的元素
+            oSelf.scrollIntoView();
+
+            //接下来处理  发送信息给服务器的内容
+            const xhr = new XMLHttpRequest();
+            xhr.open("post", "http://www.tuling123.com/openapi/api");
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            xhr.send(`key=c7bccfe6147144e6858d04a10f53141e&info=${myText}&userid=335220`);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //成功了就获取到服务器返回的内容,因为返回的是JSON格式的字符串，所以要转成js对象，因为要获取里面的值
+                    const otherText = JSON.parse(xhr.responseText);
+                    //然后就把内容拼接起来
+                    const otherDate = Date.now();
+                    const otherStr = `<div class="other" id="${otherDate}">
+                                            <h5>对方说</h5>
+                                            <p>${otherText.text}</p>
+                                        </div>`
+                    //把内容赋值给messages,并且要+=
+                    oMessages.innerHTML += otherStr;
+                    //获取到最新的元素让它显示在最下面
+                    const oOther = document.getElementById(otherDate);
+                    oOther.scrollIntoView();
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
