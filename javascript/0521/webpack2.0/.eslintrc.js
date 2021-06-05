@@ -1,0 +1,11 @@
+module.exports={
+    parserOptions:{
+        ecmaVersion:10,
+        sourceType:"module",
+    },
+    rules:{
+        semi:2,
+        eqeqeq:"error",
+        "no-var":"error",
+    },
+}

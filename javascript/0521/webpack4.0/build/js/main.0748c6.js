@@ -1,0 +1,1 @@
+!function(){"use strict";console.log([1,2,3,4,5,6],"hello world",100,{name:"小明",add:"深圳"}),console.log("fn函数"),console.log(!1)}();

@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("fn"),console.log({class:"0223",add:"深圳"}),console.log(["ni","shi","shui"],3.14),console.log("分别导出"),console.log("默认导出"),console.log("are you ok ?"),console.log({who:"you",what:"pig"}),console.log([1,2,3,4,5])})();

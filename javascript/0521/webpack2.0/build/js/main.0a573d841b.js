@@ -1,0 +1,1 @@
+!function(){"use strict";console.log("asndla",[12,312,12,1]),console.log("fn函数"),console.log(0x3f28cb71571c7),console.log(222222222222),console.log("assad",{class:"web"}),console.log("c函数"),console.log(10),console.log("fn3函数")}();

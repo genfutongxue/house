@@ -1,0 +1,1 @@
+!function(){"use strict";console.log("fn1"),console.log("hehe"),console.log({class:210223}),console.log(!1)}();

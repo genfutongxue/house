@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1,
+        #box2,
+        #box3,
+        #box4 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+        #box1 {
+            background-color: aquamarine;
+        }
+
+        #box2 {
+            background-color: blue;
+        }
+
+        #box3 {
+            background-color: brown;
+        }
+
+        #box4 {
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <script>
+        //拖拽
+        function fn1(id) {
+            this.oBox = document.getElementById(id);
+            const a_this = this;
+            this.oBox.onmousedown = function(e){
+                a_this.down(e);
+            }
+        }
+
+        fn1.prototype.down = function (e) {
+            const b_this=this;
+            //获取鼠标到目标元素原点的距离
+            this.mouseToBox = {
+                x: e.offsetX,
+                y: e.offsetY
+            }
+            document.onmousemove = function(e){
+                b_this.move(e);
+            }
+        }
+
+        fn1.prototype.move = function mouseMove(e) {
+            //获取到鼠标距离窗口的距离
+            const mouseToWin = {
+                x: e.clientX,
+                y: e.clientY
+            }
+            //那么box距离的窗口的距离就是鼠标距离窗口的距离-鼠标距离目标元素的距离
+            const boxToWin = {
+                x: mouseToWin.x - this.mouseToBox.x,
+                y: mouseToWin.y - this.mouseToBox.y
+            }
+            //设置临界值
+            if (boxToWin.x <= 0) boxToWin.x = 0;
+            if (boxToWin.x >= document.documentElement.clientWidth - this.oBox.offsetWidth)
+                boxToWin.x = document.documentElement.clientWidth - this.oBox.offsetWidth;
+            if (boxToWin.y <= 0) boxToWin.y = 0;
+            if (boxToWin.y >= document.documentElement.clientHeight - this.oBox.offsetHeight)
+                boxToWin.y = document.documentElement.clientHeight - this.oBox.offsetHeight;
+            this.oBox.style.left = boxToWin.x + "px";
+            this.oBox.style.top = boxToWin.y + "px";
+            document.onmouseup = function () {
+
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        };
+
+
+        new fn1("box1");
+        new fn1("box2");
+        new fn1("box3");
+        new fn1("box4");
+    </script>
+</body>
+
+</html>
